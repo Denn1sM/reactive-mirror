@@ -4,6 +4,7 @@ import Connections from "./components/swa/Connections";
 import {makeStyles} from "@material-ui/core/styles";
 import Clock from "./components/Clock/Clock";
 import Kalender from "./components/Calendar/Kalender";
+import Weather from "./components/Weather/Weather";
 
 const useStyles = makeStyles((theme) => ({
     back: {
@@ -70,9 +71,10 @@ const ScreenContainer: React.FC = () => {
     console.log("hccellodd")
     return (
         <>
-            <div className={classes.topRight}>
-                <Kalender/>
+            <div className={classes.topLeft}>
+                <Weather />npm r
             </div>
+
             <div className={classes.topRight}>
                 <Connections haltestelle="2000116" />
             </div>
