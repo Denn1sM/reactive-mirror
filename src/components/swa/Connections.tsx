@@ -10,8 +10,7 @@ import {IconButton} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     list: {
-        boxShadow: "rgba(99, 99, 99, 0.3) -5px 2px 8px 0px",
-        backgroundColor: "black",
+        backgroundColor: "transparent",
         color: theme.palette.primary.contrastText,
         fontSize: "15px"
     },
@@ -28,17 +27,17 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "row",
         flexWrap: "nowrap",
         whiteSpace: "nowrap",
-        width: "80%"
     },
     time: {
         width: "30%"
     },
     ziel: {
+        paddingLeft: "30px",
         width: "70%",
         whiteSpace: "nowrap",
     },
     tram: {
-        backgroundColor: theme.palette.secondary.light,
+        backgroundColor: theme.palette.info.main,
         color: theme.palette.secondary.contrastText,
         height: "35px",
         width: "35px"
@@ -49,6 +48,36 @@ const useStyles = makeStyles((theme) => ({
         height: "35px",
         width: "35px"
     },
+    indenter: {
+        paddingLeft: "20px",
+        "&:nth-child(2)": {
+            paddingLeft: "70px"
+        },
+        "&:nth-child(3)": {
+            paddingLeft: "105px"
+        },
+        "&:nth-child(4)": {
+            paddingLeft: "125px"
+        },
+        "&:nth-child(5)": {
+            paddingLeft: "140px"
+        }
+    },
+    indenterInverted: {
+        paddingLeft: "140px",
+        "&:nth-child(2)": {
+            paddingLeft: "125px"
+        },
+        "&:nth-child(3)": {
+            paddingLeft: "105px"
+        },
+        "&:nth-child(4)": {
+            paddingLeft: "70px"
+        },
+        "&:nth-child(5)": {
+            paddingLeft: "20px"
+        }
+    },
     divider: {
         backgroundColor: theme.palette.primary.light,
         height: "0.1px"
@@ -57,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
 
 interface Props {
     haltestelle: string;
+    invertOrientation: boolean;
 }
 export interface Verbindung {
     time: string,
@@ -68,6 +98,44 @@ const Connections: React.FC<Props> = (props) => {
     const classes = useStyles();
     const [alleVerbindungen, setAlleVerbindungen] = useState<Array<Verbindung> | void>();
 
+
+    useEffect(() => {
+
+    const v: Array<Verbindung> = [
+    {
+        time: "10:49",
+        linie: "1",
+        ziel: "Somewhere"
+
+    },
+        {
+        time: "10:49",
+        linie: "1",
+        ziel: "Somewhere"
+
+    },
+        {
+        time: "10:49",
+        linie: "1",
+        ziel: "Somewhere"
+
+    },
+        {
+        time: "10:49",
+        linie: "1",
+        ziel: "Somewhere"
+
+    },
+        {
+        time: "10:49",
+        linie: "1",
+        ziel: "Somewhere"
+
+    },
+    ]
+    setAlleVerbindungen(v)
+    }, [])
+
     const fetchIt = useCallback(async () => {
         console.log("Started fetch")
         const x = await fetchData(props.haltestelle);
@@ -75,44 +143,78 @@ const Connections: React.FC<Props> = (props) => {
         console.log(alleVerbindungen)
 
     }, [])
-    useEffect(() => {
-        console.log("effect")
-        fetchIt()
-    }, [])
+
+
     setInterval(() => fetchIt(), 100000);
     const trams = ["1", "2", "3", "4", "5", "6"]
 
     return (
         <div className={classes.list}>
-            <List component="nav" aria-label="main mailbox folders">
+            <List  className={classes.list}>
                 {alleVerbindungen?.map(verbindung => (
                     <>
-                    <ListItem key={Math.random()} className={classes.listItem}>
-                        <ListItemIcon>
-                            {trams.includes(verbindung.linie) ?
-                                <IconButton className={classes.tram}>
-                                    {verbindung.linie}
-                                </IconButton>
+                        {props.invertOrientation
+                            ?
+                            <div className={classes.indenterInverted}>
+
+                                <ListItem key={Math.random()} className={classes.listItem}>
+
+                                    <ListItemIcon>
+                                        {trams.includes(verbindung.linie) ?
+                                            <IconButton className={classes.tram}>
+                                                {verbindung.linie}
+                                            </IconButton>
+                                            :
+                                            <IconButton className={classes.bus}>
+                                                {verbindung.linie}
+                                            </IconButton>}
+
+                                    </ListItemIcon>
+
+                                    <ListItemText className={classes.content} disableTypography>
+                                        <div className={classes.time}>
+                                            {verbindung.time}
+                                        </div>
+                                        <div className={classes.ziel}>
+                                            {verbindung.ziel}
+                                        </div>
+                                        <Divider className={classes.divider} variant="inset"/>
+                                    </ListItemText>
+
+                                </ListItem>
+                            </div>
                             :
-                                <IconButton className={classes.bus} >
-                                    {verbindung.linie}
-                                </IconButton>                            }
+                            <div className={classes.indenter}>
 
-                        </ListItemIcon>
+                            <ListItem key={Math.random()} className={classes.listItem}>
 
-                        <ListItemText className={classes.content} disableTypography>
+                            <ListItemIcon>
+                        {trams.includes(verbindung.linie) ?
+                            <IconButton className={classes.tram}>
+                        {verbindung.linie}
+                            </IconButton>
+                            :
+                            <IconButton className={classes.bus} >
+                        {verbindung.linie}
+                            </IconButton>}
+
+                            </ListItemIcon>
+
+                            <ListItemText className={classes.content} disableTypography>
                             <div className={classes.time}>
-                                {verbindung.time}
+                        {verbindung.time}
                             </div>
                             <div className={classes.ziel}>
-                                {verbindung.ziel}
+                        {verbindung.ziel}
                             </div>
+                            <Divider className={classes.divider} variant="inset"/>
+                            </ListItemText>
 
-                        </ListItemText>
-                    </ListItem>
-                    <Divider className={classes.divider} variant="inset"/>
+                            </ListItem>
+                            </div>
+                        }
                     </>
-                ))}
+                    ))}
 
             </List>
         </div>

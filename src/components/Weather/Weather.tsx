@@ -1,26 +1,27 @@
 import React from "react";
 // @ts-ignore
 import ReactWeather, { useOpenWeather } from 'react-open-weather';
+import theme from "../../theme";
 
 
 const customStyles = {
     fontFamily:  'Helvetica, sans-serif',
-    gradientStart:  '#0181C2',
-    gradientMid:  '#04A7F9',
-    gradientEnd:  '#4BC4F7',
-    locationFontColor:  '#FFF',
-    todayTempFontColor:  '#FFF',
-    todayDateFontColor:  '#B5DEF4',
+    gradientStart:  'transparent',
+    gradientMid:  'transparent',
+    gradientEnd:  'transparent',
+    locationFontColor:  theme.palette.primary.contrastText,
+    todayTempFontColor:  theme.palette.primary.contrastText,
+    todayDateFontColor:  theme.palette.secondary.light,
     todayRangeFontColor:  '#B5DEF4',
-    todayDescFontColor:  '#B5DEF4',
-    todayInfoFontColor:  '#B5DEF4',
-    todayIconColor:  '#FFF',
-    forecastBackgroundColor:  '#FFF',
-    forecastSeparatorColor:  '#DDD',
-    forecastDateColor:  '#777',
+    todayDescFontColor:  theme.palette.secondary.light,
+    todayInfoFontColor:  theme.palette.secondary.light,
+    todayIconColor:  theme.palette.primary.contrastText,
+    forecastBackgroundColor:  'transparent',
+    forecastSeparatorColor:  theme.palette.primary.light,
+    forecastDateColor:  theme.palette.secondary.contrastText,
     forecastDescColor:  '#777',
-    forecastRangeColor:  '#777',
-    forecastIconColor:  '#4BC4F7',
+    forecastRangeColor:  theme.palette.secondary.contrastText,
+    forecastIconColor:  theme.palette.secondary.light,
 };
 
 
