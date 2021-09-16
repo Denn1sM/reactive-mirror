@@ -17,13 +17,13 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         fontFamily: "Times",
         color: "white",
-        fontSize: "5px"
+        fontSize: "5px",
     },
     topLeft: {
         position: "absolute",
         width: "45%",
         height: "40%",
-        overflow: "hidden"
+        overflow: "hidden",
     },
     StopTop: {
         position: "absolute",
@@ -32,10 +32,12 @@ const useStyles = makeStyles((theme) => ({
         width: "100px",
         height: "50px",
         fontSize: "14px",
-        color: "white",
-        fontFamily: "orbitron"
-
+        background: `linear-gradient(45deg, ${theme.palette.info.light} 30%, ${theme.palette.success.main} 90%), radial-gradient(${theme.palette.primary.contrastText}, ${theme.palette.info.light})`,
+        fontFamily: "orbitron",
+        WebkitBackgroundClip: "text !important",
+        textFillColor: "transparent",
     },
+
     StopBottom: {
         position: "absolute",
         top: "68%",
@@ -44,23 +46,80 @@ const useStyles = makeStyles((theme) => ({
         height: "50px",
         fontSize: "14px",
         fontFamily: "orbitron",
-        backgroundClip: "text",
+        WebkitBackgroundClip: "text !important",
         textFillColor: "transparent",
-
+        background: `linear-gradient(45deg, ${theme.palette.secondary.light} 30%, ${theme.palette.secondary.main} 90%), radial-gradient(${theme.palette.primary.contrastText}, ${theme.palette.info.light})`,
     },
-    y: {
-        background: `linear-gradient(to right,${theme.palette.info.main},${theme.palette.success.main}) `,
+
+    middle: {
+        position: "absolute",
+        top: "40%",
+        height: "20%",
+        display: "flex",
+        justifyContent: "space-between",
 
     },
     animation: {
         left: "50px",
         position: "absolute",
         top: "42%",
-        height: "90px",
-        width: "90px",
+        height: "150px",
+        width: "150px",
         borderRadius: "50%",
         animation: "$spin 25s infinite alternate",
 },
+    middleLeft: {
+        position: "absolute",
+        top: "40%",
+        height: "20%",
+        width: "20%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+
+    animation2: {
+        left: "30%",
+        position: "absolute",
+        top: "50%",
+        height: "5px",
+        width: "55%",
+        borderRadius: "50%",
+        animation: "$spin 25s infinite alternate",
+
+    },
+
+    bottomLeft: {
+        position: "absolute",
+        top: "60%",
+        width: "45%",
+        height: "40%",
+        overflow: "hidden",
+    },
+    topRight: {
+        position: "absolute",
+        top: "0%",
+        left: "50%",
+        height: "45%",
+        overflow: "hidden"
+    },
+    middleRight: {
+        position: "absolute",
+        left: "70%",
+        top: "45%",
+        paddingTop: "20px",
+        width: "30%",
+        height: "10%",
+
+    },
+    bottomRight: {
+        position: "absolute",
+        width: "40%",
+        left: "50%",
+        top: "55%",
+        height: "45%",
+        overflow: "hidden"
+    },
 
     // bubble size: ca 15px, muss die differenz aus den offsets ergeben
     "@keyframes spin": {
@@ -109,45 +168,7 @@ const useStyles = makeStyles((theme) => ({
             boxShadow: "#5e5d5e 0px 0px 12px 20px"
         }
     },
-    middleLeft: {
-        position: "absolute",
-        top: "44%",
-        height: "10%",
-        width: "20%",
-        paddingLeft: "190px",
-        paddingRight: "5%"
-    },
-    bottomLeft: {
-        position: "absolute",
-        top: "56%",
-        height: "40%",
-        width: "45%",
-        overflow: "hidden"
-    },
-    topRight: {
-        position: "absolute",
-        top: "0%",
-        left: "50%",
-        height: "45%",
-        overflow: "hidden"
-    },
-    middleRight: {
-        position: "absolute",
-        left: "70%",
-        top: "45%",
-        paddingTop: "20px",
-        width: "30%",
-        height: "10%",
 
-    },
-    bottomRight: {
-        position: "absolute",
-        width: "40%",
-        left: "50%",
-        top: "55%",
-        height: "45%",
-        overflow: "hidden"
-    },
 }));
 
 /*
@@ -159,35 +180,48 @@ const ScreenContainer: React.FC = () => {
     console.log("hccellodd")
     return (
         <>
-            <div className={classes.topRight}>
-                <Weather />
-            </div>
 
-            <div className={classes.animation} />
-
-            <div className={classes.bottomRight}>
-                <Kalender/>
+            <div className={classes.StopTop}>
+                Rotes Tor
             </div>
 
             <div className={classes.topLeft}>
                 <Connections haltestelle="2000116" invertOrientation={false}/>
             </div>
 
-            <div className={classes.StopTop}>
-                Rotes Tor
-            </div>
+
+
+            <div className={classes.animation} />
             <div className={classes.middleLeft}>
                 <Clock />
             </div>
+            <div className={classes.animation2}/>
 
             <div className={classes.StopBottom}>
-                <p className={classes.y}>
+                <p>
                     Hochschule
                 </p>
             </div>
+
             <div className={classes.bottomLeft}>
                 <Connections haltestelle="2000768" invertOrientation={true}/>
             </div>
+
+            <div className={classes.topRight}>
+                <Weather />
+            </div>
+
+            <div className={classes.bottomRight}>
+                <Kalender/>
+            </div>
+
+
+
+
+
+
+
+
         </>
     );
 }
