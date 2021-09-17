@@ -2,7 +2,14 @@ import React from "react";
 // @ts-ignore
 import ReactWeather, { useOpenWeather } from 'react-open-weather';
 import theme from "../../theme";
+import {makeStyles} from "@material-ui/core/styles";
 
+const useStyles = makeStyles((theme) => ({
+
+    weather: {
+        flexGrow: 4,
+    }
+}))
 
 const customStyles = {
     fontFamily:  'Helvetica, sans-serif',
@@ -27,6 +34,7 @@ const customStyles = {
 
 const Weather: React.FC = () => {
 
+    const classes = useStyles();
     const { data, isLoading, errorMessage } = useOpenWeather({
         key: 'fd897db41675fbf42e3a64287ee9353b',
         lat: '48.3705',
@@ -35,6 +43,7 @@ const Weather: React.FC = () => {
         unit: 'metric', // values are (metric, standard, imperial)
     });
     return (
+        <div className={classes.weather}>
         <ReactWeather
             theme={customStyles}
             isLoading={isLoading}
@@ -45,6 +54,7 @@ const Weather: React.FC = () => {
             unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
             showForecast
         />
+        </div>
     );
 }
 export default Weather

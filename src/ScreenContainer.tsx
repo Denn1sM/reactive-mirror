@@ -24,67 +24,63 @@ const useStyles = makeStyles((theme) => ({
         width: "45%",
         height: "40%",
         overflow: "hidden",
-    },
-    StopTop: {
-        position: "absolute",
-        top: "25%",
-        left: "25px",
-        width: "100px",
-        height: "50px",
-        fontSize: "14px",
-        background: `linear-gradient(45deg, ${theme.palette.info.light} 30%, ${theme.palette.success.main} 90%), radial-gradient(${theme.palette.primary.contrastText}, ${theme.palette.info.light})`,
-        fontFamily: "orbitron",
-        WebkitBackgroundClip: "text !important",
-        textFillColor: "transparent",
-    },
-
-    StopBottom: {
-        position: "absolute",
-        top: "68%",
-        left: "25px",
-        width: "100px",
-        height: "50px",
-        fontSize: "14px",
-        fontFamily: "orbitron",
-        WebkitBackgroundClip: "text !important",
-        textFillColor: "transparent",
-        background: `linear-gradient(45deg, ${theme.palette.secondary.light} 30%, ${theme.palette.secondary.main} 90%), radial-gradient(${theme.palette.primary.contrastText}, ${theme.palette.info.light})`,
+        marginLeft: "6%",
     },
 
     middle: {
         position: "absolute",
         top: "40%",
         height: "20%",
+        width: "100%",
         display: "flex",
         justifyContent: "space-between",
+        alignItems: "center",
+    },
+    stopAndIcon: {
+        marginLeft: "3%",
+        height: "450px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+    StopTop: {
+        width: "130px",
+        height: "50px",
+        fontSize: "14px",
+        background: `linear-gradient(45deg, ${theme.palette.info.light} 30%, ${theme.palette.success.main} 90%), radial-gradient(${theme.palette.primary.contrastText}, ${theme.palette.info.light})`,
+        fontFamily: "orbitron",
+        WebkitBackgroundClip: "text !important",
+        textFillColor: "transparent",
+        textAlign: "center"
+    },
+    StopBottom: {
+        width: "130px",
+        height: "50px",
+        fontSize: "14px",
+        fontFamily: "orbitron",
+        WebkitBackgroundClip: "text !important",
+        textFillColor: "transparent",
+        background: `linear-gradient(45deg, ${theme.palette.secondary.light} 30%, ${theme.palette.secondary.main} 90%), radial-gradient(${theme.palette.primary.contrastText}, ${theme.palette.info.light})`,
+        textAlign: "center"
 
     },
     animation: {
-        left: "50px",
-        position: "absolute",
-        top: "42%",
-        height: "150px",
-        width: "150px",
+        height: "120px",
+        width: "120px",
         borderRadius: "50%",
         animation: "$spin 25s infinite alternate",
 },
-    middleLeft: {
-        position: "absolute",
-        top: "40%",
-        height: "20%",
-        width: "20%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+    clock: {
+        width: "200px",
+        paddingRight: "180px"
     },
 
     animation2: {
-        left: "30%",
-        position: "absolute",
-        top: "50%",
         height: "5px",
-        width: "55%",
+        width: "40%",
         borderRadius: "50%",
+        marginRight: "200px",
         animation: "$spin 25s infinite alternate",
 
     },
@@ -95,30 +91,39 @@ const useStyles = makeStyles((theme) => ({
         width: "45%",
         height: "40%",
         overflow: "hidden",
+        marginLeft: "6%",
+
     },
     topRight: {
         position: "absolute",
         top: "0%",
         left: "50%",
         height: "45%",
-        overflow: "hidden"
-    },
-    middleRight: {
-        position: "absolute",
-        left: "70%",
-        top: "45%",
-        paddingTop: "20px",
-        width: "30%",
-        height: "10%",
+        width: "50%",
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: "space-around",
+        flexDirection: "row",
+        alignItems: "flex-start",
 
     },
+    spacerWide: {
+        width: "100px",
+    },
+    spacerSmall: {
+        width: "50px",
+    },
+
     bottomRight: {
         position: "absolute",
         width: "40%",
-        left: "50%",
+        left: "60%",
         top: "55%",
-        height: "45%",
-        overflow: "hidden"
+        height: "40%",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
     },
 
     // bubble size: ca 15px, muss die differenz aus den offsets ergeben
@@ -181,26 +186,34 @@ const ScreenContainer: React.FC = () => {
     return (
         <>
 
-            <div className={classes.StopTop}>
-                Rotes Tor
-            </div>
+
 
             <div className={classes.topLeft}>
                 <Connections haltestelle="2000116" invertOrientation={false}/>
             </div>
 
 
+            <div className={classes.middle}>
+                <div className={classes.stopAndIcon}>
+                    <div className={classes.StopTop}>
+                        <p>
+                            ROTES TOR
+                        </p>
+                    </div>
 
-            <div className={classes.animation} />
-            <div className={classes.middleLeft}>
-                <Clock />
-            </div>
-            <div className={classes.animation2}/>
+                     <div className={classes.animation} />
 
-            <div className={classes.StopBottom}>
-                <p>
-                    Hochschule
-                </p>
+                    <div className={classes.StopBottom}>
+                        <p>
+                            HOCHSCHULE
+                        </p>
+                    </div>
+                </div>
+
+                <div className={classes.clock}>
+                    <Clock />
+                </div>
+                <div className={classes.animation2}/>
             </div>
 
             <div className={classes.bottomLeft}>
@@ -208,11 +221,15 @@ const ScreenContainer: React.FC = () => {
             </div>
 
             <div className={classes.topRight}>
+                <div className={classes.spacerWide} />
                 <Weather />
+                <div className={classes.spacerSmall} />
+
             </div>
 
             <div className={classes.bottomRight}>
                 <Kalender/>
+                <div className={classes.spacerSmall}/>
             </div>
 
 

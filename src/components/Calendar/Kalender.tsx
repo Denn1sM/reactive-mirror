@@ -5,9 +5,7 @@ import Calendar from "./react-calendar/src";
 
 const useStyles = makeStyles((theme) => ({
     cal: {
-        "&react-calendar__month-view__days__day--neighboringMonth": {
-            color: theme.palette.primary.light,
-        }
+
     }
 
 
@@ -16,9 +14,9 @@ const useStyles = makeStyles((theme) => ({
 const Kalender: React.FC = () => {
 
     return (
-        <>
+        <div>
             <Calendar className='react-calendar'/>
-        </>
+        </div>
     );
 }
 export default Kalender

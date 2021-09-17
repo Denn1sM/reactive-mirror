@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     list: {
         backgroundColor: "transparent",
         color: theme.palette.primary.contrastText,
-        fontSize: "15px"
+        fontSize: "15px",
     },
     listItem: {
         height: "55px",
@@ -40,13 +40,41 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.info.main,
         color: theme.palette.secondary.contrastText,
         height: "35px",
-        width: "35px"
+        fontSize: "15px",
+        width: "35px",
+        fontFamily: "orbitron",
+        animation: "$glowTram 4s infinite alternate",
+        boxShadow: `0px 0px 6px 3px ${theme.palette.info.main}`
+
     },
+
+    "@keyframes glowTram": {
+        "0%": {
+            boxShadow: `inset 0px 0px 6px 2px ${theme.palette.info.main}, 0px 0px 6px 2px ${theme.palette.info.main}`
+        },
+        "100%": {
+            boxShadow: `inset 0px 0px 6px 8px ${theme.palette.info.main}, 0px 0px 6px 4px ${theme.palette.info.main}`
+        },
+    },
+
+    "@keyframes glowBus": {
+        "0%": {
+            boxShadow: `inset 0px 0px 6px 2px ${theme.palette.secondary.main}, 0px 0px 6px 2px ${theme.palette.secondary.main}`
+        },
+        "100%": {
+            boxShadow: `inset 0px 0px 6px 8px ${theme.palette.secondary.main}, 0px 0px 6px 4px ${theme.palette.secondary.main}`
+        },
+    },
+
     bus: {
         backgroundColor: theme.palette.secondary.main,
         color: theme.palette.secondary.contrastText,
         height: "35px",
-        width: "35px"
+        width: "35px",
+        fontSize: "15px",
+        fontFamily: "orbitron",
+        animation: "$glowBus 4s infinite alternate",
+        boxShadow: `0px 0px 6px 3px ${theme.palette.secondary.main}`
     },
     indenter: {
         paddingLeft: "20px",
@@ -116,7 +144,7 @@ const Connections: React.FC<Props> = (props) => {
     },
         {
         time: "10:49",
-        linie: "1",
+        linie: "25",
         ziel: "Somewhere"
 
     },
