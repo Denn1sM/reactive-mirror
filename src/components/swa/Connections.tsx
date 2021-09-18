@@ -166,8 +166,8 @@ const Connections: React.FC<Props> = (props) => {
 
     const fetchIt = useCallback(async () => {
         console.log("Started fetch")
-        const x = await fetchData(props.haltestelle);
-        setAlleVerbindungen(x)
+        //const x = await fetchData(props.haltestelle);
+        //setAlleVerbindungen(x)
         console.log(alleVerbindungen)
 
     }, [])
