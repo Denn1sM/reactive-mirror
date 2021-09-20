@@ -8,34 +8,27 @@ interface Props {
     name: string,
 }
 
-const StockChart: React.FC<Props> = (props) => {
+
+const StockChartPercentage: React.FC<Props> = (props) => {
 
     const initialValue = props.chartData[0].open
-
-
     const totalDuration = 4000;
     const delayBetweenPoints = totalDuration / props.chartData.length;
     const previousY = (ctx: any) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+    console.log(props.chartData.length)
+
 
     const calculatePercentage: any = () => {
         const array: Array<number> = []
-        props.chartData.map((e: infoElement) => array.push(e.open / initialValue - 1))
+        props.chartData.map((e: infoElement) => array.push(e.open / initialValue))
         return array
     }
 
     const getLabels: any = () => {
         const array: Array<string> = []
         props.chartData.map((e: infoElement) => array.push(e.date))
-        console.log(array)
         return array
     }
-
-    const getData: any = () => {
-        const array: any = props.chartData.map((element: infoElement) => element.open)
-        console.log(array)
-        return array
-    }
-
 
     return (
         <div>
@@ -46,12 +39,15 @@ const StockChart: React.FC<Props> = (props) => {
                         {
                             data: calculatePercentage(),
                             borderColor: theme.palette.primary.contrastText,
-                            yAxisID: "y"
-                        },
 
+                        }
                     ]
                 }}
                 options={{
+                    parsing: {
+                        xAxisKey: 'date',
+                        yAxisKey: 'open',
+                    },
                     elements: {
                         line: {
                         },
@@ -64,17 +60,13 @@ const StockChart: React.FC<Props> = (props) => {
                             grid: {
                                 color: theme.palette.primary.light,
                             },
-                            min: -0.2,
-                            max: 0.2
                         },
-
                         x: {
                             ticks: {
                                 autoSkip: true,
                                 maxTicksLimit: 10
                             }
                         }
-
                     },
 
                     animations: {
@@ -111,8 +103,6 @@ const StockChart: React.FC<Props> = (props) => {
             />
         </div>
     );
-
-
 };
 
-export default StockChart
+export default StockChartPercentage

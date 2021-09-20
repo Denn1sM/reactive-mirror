@@ -14,7 +14,7 @@ const Router: React.FC = () => {
                  </Route>
 
                  <Route path="/aktien">
-                    <Aktien />
+                    <Aktien percentageScala={false} />
                  </Route>
             </BrowserRouter>
          </div>
