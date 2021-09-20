@@ -3,6 +3,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import json from "./result.json";
 import {Bar} from "react-chartjs-2";
 import StockChart from "./StockChart";
+import theme from "../../theme";
 
 const useStyles = makeStyles((theme) => ({
     text: {
@@ -12,32 +13,30 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export interface infoElement {
-    date: string;
-    open: string;
-    end: string;
+    stock: string;
+    date: Array<string>;
+    price: Array<number>;
 }
 
 const Aktien: React.FC<Props<any>> = ({}) => {
 
     const classes = useStyles();
 
+    const [stockData, setStockData] = useState<Array<infoElement>>(json)
     const [chartData, setChartData] = useState({})
-
+    const [stockName, setStockName] = useState("")
     useEffect(() => {
         console.log(json)
+        setStockData(json)
+        setStockName(stockData[0].stock)
         setChartData({
-            labels: ["abc", "def", "geh"],
+            labels: stockData[0].date,
             datasets: [
                 {
                     label: "Price in USD",
-                    data: [3, 4, 3],
-                    backgroundColor: [
-                        "#ffbb11",
-                        "#ecf0f1",
-                        "#50AF95",
-                        "#f3ba2f",
-                        "#2a71d0"
-                    ]
+                    data: stockData[0].price,
+                    borderColor: theme.palette.primary.contrastText,
+
                 }
             ]
         });
@@ -45,7 +44,7 @@ const Aktien: React.FC<Props<any>> = ({}) => {
 
     return (
         <>
-            <StockChart chartData={chartData} />
+            <StockChart chartData={chartData} name={stockName} length={stockData[0].price.length} />
         </>
     );
 }
