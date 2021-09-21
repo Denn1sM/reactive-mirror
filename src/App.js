@@ -3,7 +3,9 @@ import './App.css';
 import ScreenContainer from "./ScreenContainer";
 import {makeStyles, MuiThemeProvider} from "@material-ui/core";
 import theme from "./theme";
+import Layout from "./Layout";
 import Router from "./Router";
+import Store from "./state/Store";
 const useStyles = makeStyles({
     root: {
         backgroundColor: "black",
@@ -17,7 +19,11 @@ function App() {
   return (
     <div className={classes.root}>
         <MuiThemeProvider theme={theme} >
-            <Router/>
+            <Store>
+                <Layout />
+                <Router/>
+            </Store>
+
         </MuiThemeProvider>
     </div>
   );

@@ -201,7 +201,6 @@ const ScreenContainer: React.FC = () => {
                         </p>
                     </div>
 
-                     <div className={classes.animation} />
 
                     <div className={classes.StopBottom}>
                         <p>

@@ -1,0 +1,19 @@
+
+.animationFor {
+    animation: mover 4s forwards;
+    width: 120px;
+    height: 120px;
+}
+.animationBack {
+    animation: mover 4s backwards;
+    width: 120px;
+    height: 120px;
+}
+
+@keyframes mover {
+0% {
+    transform: translateX(0px)
+}
+100% {
+    transform: translateX(400px)}
+}

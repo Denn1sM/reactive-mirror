@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {Bar} from "react-chartjs-2";
 import StockChart from "./StockChart";
 import theme from "../../theme";
 // @ts-ignore
 import StockChartPercentage from "./StockChartPercentage";
+import {Context} from "../../state/Store";
 
 const useStyles = makeStyles((theme) => ({
     chart: {
@@ -52,9 +53,9 @@ interface Props {
 }
 
 const Aktien: React.FC<Props> = (props) => {
-
     const classes = useStyles();
-
+    // @ts-ignore
+    const [state, dispatch] = useContext(Context);
     const akn = "AMZN"
 
     const [chartData, setChartData] = useState<Array<infoElement>>([])
@@ -62,6 +63,10 @@ const Aktien: React.FC<Props> = (props) => {
     const [startPrice, setStartPrice] = useState(0)
     const [endPrice, setEndPrice] = useState(0)
 
+    useEffect(() => {
+        console.log("sth")
+        dispatch({type: "MOVE", payload: 1})
+    }, [])
 
     useEffect(() => {
         fetch("https://financialmodelingprep.com/api/v3/historical-chart/5min/"+akn+"?apikey=f91a6ad6368eef5a33eef87d530af583")
