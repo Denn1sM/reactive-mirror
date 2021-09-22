@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getYear, getMonth, getMonthStart } from '@wojtekmaj/date-utils';
+import {getMonth, getMonthStart, getYear} from '@wojtekmaj/date-utils';
 import Flex from '../Flex';
-import { getDayOfWeek } from '../shared/dates';
-import { formatWeekday, formatShortWeekday as defaultFormatShortWeekday } from '../shared/dateFormatter';
-import { isCalendarType } from '../shared/propTypes';
+import {getDayOfWeek} from '../shared/dates';
+import {formatShortWeekday as defaultFormatShortWeekday, formatWeekday} from '../shared/dateFormatter';
+import {isCalendarType} from '../shared/propTypes';
+
 var className = 'react-calendar__month-view__weekdays';
 export default function Weekdays(props) {
   var calendarType = props.calendarType,

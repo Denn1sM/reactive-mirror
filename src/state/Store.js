@@ -3,7 +3,8 @@ import Reducer from './Reducer'
 
 
 const initialState = {
-    move: [],
+    move: 0,
+    fade: 0,
     error: null
 };
 

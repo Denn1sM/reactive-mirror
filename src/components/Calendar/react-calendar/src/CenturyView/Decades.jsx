@@ -1,11 +1,11 @@
 import React from 'react';
-import { getDecadeStart } from '@wojtekmaj/date-utils';
+import {getDecadeStart} from '@wojtekmaj/date-utils';
 
 import TileGroup from '../TileGroup';
 import Decade from './Decade';
 
-import { getBeginOfCenturyYear } from '../shared/dates';
-import { tileGroupProps } from '../shared/propTypes';
+import {getBeginOfCenturyYear} from '../shared/dates';
+import {tileGroupProps} from '../shared/propTypes';
 
 export default function Decades(props) {
   const { activeStartDate } = props;

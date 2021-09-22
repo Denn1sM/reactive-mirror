@@ -1,10 +1,4 @@
-import {
-  formatDate,
-  formatMonth,
-  formatMonthYear,
-  formatShortWeekday,
-  formatYear,
-} from './dateFormatter';
+import {formatDate, formatMonth, formatMonthYear, formatShortWeekday, formatYear,} from './dateFormatter';
 
 describe('formatDate', () => {
   it('returns proper full numeric date', () => {

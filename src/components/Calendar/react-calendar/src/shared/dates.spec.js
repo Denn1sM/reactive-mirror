@@ -1,24 +1,24 @@
-import { getDayStart, getDayEnd } from '@wojtekmaj/date-utils';
+import {getDayEnd, getDayStart} from '@wojtekmaj/date-utils';
 
 import {
-  getDayOfWeek,
-  getBeginOfCenturyYear,
-  getBeginOfDecadeYear,
-  getBeginOfWeek,
-  getWeekNumber,
-  getRange,
-  getBegin,
-  getBeginPrevious,
-  getBeginNext,
-  getBeginPrevious2,
-  getBeginNext2,
-  getEnd,
-  getEndPrevious,
-  getEndPrevious2,
-  getValueRange,
-  getCenturyLabel,
-  getDecadeLabel,
-  isWeekend,
+    getBegin,
+    getBeginNext,
+    getBeginNext2,
+    getBeginOfCenturyYear,
+    getBeginOfDecadeYear,
+    getBeginOfWeek,
+    getBeginPrevious,
+    getBeginPrevious2,
+    getCenturyLabel,
+    getDayOfWeek,
+    getDecadeLabel,
+    getEnd,
+    getEndPrevious,
+    getEndPrevious2,
+    getRange,
+    getValueRange,
+    getWeekNumber,
+    isWeekend,
 } from './dates';
 
 describe('getDayOfWeek', () => {

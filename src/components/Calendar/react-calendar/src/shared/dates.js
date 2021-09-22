@@ -1,42 +1,37 @@
 import {
-  getYear,
-  getMonth as getMonthIndex,
-
-  getCenturyStart,
-  getPreviousCenturyStart,
-  getNextCenturyStart,
-  getCenturyEnd,
-  getPreviousCenturyEnd,
-  getCenturyRange,
-
-  getDecadeStart,
-  getPreviousDecadeStart,
-  getNextDecadeStart,
-  getDecadeEnd,
-  getPreviousDecadeEnd,
-  getDecadeRange,
-
-  getYearStart,
-  getPreviousYearStart,
-  getNextYearStart,
-  getYearEnd,
-  getPreviousYearEnd,
-  getYearRange,
-
-  getMonthStart,
-  getPreviousMonthStart,
-  getNextMonthStart,
-  getMonthEnd,
-  getPreviousMonthEnd,
-  getMonthRange,
-
-  getDayStart,
-  getDayEnd,
-  getDayRange,
+    getCenturyEnd,
+    getCenturyRange,
+    getCenturyStart,
+    getDayEnd,
+    getDayRange,
+    getDayStart,
+    getDecadeEnd,
+    getDecadeRange,
+    getDecadeStart,
+    getMonth as getMonthIndex,
+    getMonthEnd,
+    getMonthRange,
+    getMonthStart,
+    getNextCenturyStart,
+    getNextDecadeStart,
+    getNextMonthStart,
+    getNextYearStart,
+    getPreviousCenturyEnd,
+    getPreviousCenturyStart,
+    getPreviousDecadeEnd,
+    getPreviousDecadeStart,
+    getPreviousMonthEnd,
+    getPreviousMonthStart,
+    getPreviousYearEnd,
+    getPreviousYearStart,
+    getYear,
+    getYearEnd,
+    getYearRange,
+    getYearStart,
 } from '@wojtekmaj/date-utils';
 
-import { CALENDAR_TYPES, WEEKDAYS } from './const';
-import { formatYear as defaultFormatYear } from './dateFormatter';
+import {CALENDAR_TYPES, WEEKDAYS} from './const';
+import {formatYear as defaultFormatYear} from './dateFormatter';
 
 const SUNDAY = WEEKDAYS[0];
 const FRIDAY = WEEKDAYS[5];

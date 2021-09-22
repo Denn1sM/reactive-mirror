@@ -5,8 +5,8 @@ import Days from './MonthView/Days';
 import Weekdays from './MonthView/Weekdays';
 import WeekNumbers from './MonthView/WeekNumbers';
 
-import { CALENDAR_TYPES, CALENDAR_TYPE_LOCALES } from './shared/const';
-import { isCalendarType } from './shared/propTypes';
+import {CALENDAR_TYPE_LOCALES, CALENDAR_TYPES} from './shared/const';
+import {isCalendarType} from './shared/propTypes';
 
 function getCalendarTypeFromLocale(locale) {
   return (

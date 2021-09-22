@@ -3,8 +3,8 @@ import React from 'react';
 import TileGroup from '../TileGroup';
 import Year from './Year';
 
-import { getBeginOfDecadeYear } from '../shared/dates';
-import { tileGroupProps } from '../shared/propTypes';
+import {getBeginOfDecadeYear} from '../shared/dates';
+import {tileGroupProps} from '../shared/propTypes';
 
 export default function Years(props) {
   const { activeStartDate } = props;

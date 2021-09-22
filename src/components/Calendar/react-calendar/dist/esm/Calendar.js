@@ -42,9 +42,10 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2;
+}
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import mergeClassNames from 'merge-class-names';
 import Navigation from './Calendar/Navigation';
@@ -52,9 +53,10 @@ import CenturyView from './CenturyView';
 import DecadeView from './DecadeView';
 import YearView from './YearView';
 import MonthView from './MonthView';
-import { getBegin, getBeginNext, getEnd, getValueRange } from './shared/dates';
-import { isCalendarType, isClassName, isMaxDate, isMinDate, isRef, isValue, isView } from './shared/propTypes';
-import { between } from './shared/utils';
+import {getBegin, getBeginNext, getEnd, getValueRange} from './shared/dates';
+import {isCalendarType, isClassName, isMaxDate, isMinDate, isRef, isValue, isView} from './shared/propTypes';
+import {between} from './shared/utils';
+
 var defaultMinDate = new Date();
 defaultMinDate.setFullYear(1, 0, 1);
 defaultMinDate.setHours(0, 0, 0, 0);

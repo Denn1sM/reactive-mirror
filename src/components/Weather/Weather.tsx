@@ -1,6 +1,6 @@
 import React from "react";
 // @ts-ignore
-import ReactWeather, { useOpenWeather } from 'react-open-weather';
+import ReactWeather, {useOpenWeather} from 'react-open-weather';
 import theme from "../../theme";
 import {makeStyles} from "@material-ui/core/styles";
 

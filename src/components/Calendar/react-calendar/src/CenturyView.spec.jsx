@@ -1,6 +1,6 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import { getDecadeStart, getDecadeEnd } from '@wojtekmaj/date-utils';
+import {mount, shallow} from 'enzyme';
+import {getDecadeEnd, getDecadeStart} from '@wojtekmaj/date-utils';
 
 import CenturyView from './CenturyView';
 

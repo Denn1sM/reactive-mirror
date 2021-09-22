@@ -1,4 +1,4 @@
-import {Bar, Line} from "react-chartjs-2";
+import {Line} from "react-chartjs-2";
 import React from "react";
 import theme from "../../theme";
 import {infoElement} from "./Aktien";
@@ -26,13 +26,11 @@ const StockChart: React.FC<Props> = (props) => {
     const getLabels: any = () => {
         const array: Array<string> = []
         props.chartData.map((e: infoElement) => array.push(e.date))
-        console.log(array)
         return array
     }
 
     const getData: any = () => {
         const array: any = props.chartData.map((element: infoElement) => element.open)
-        console.log(array)
         return array
     }
 

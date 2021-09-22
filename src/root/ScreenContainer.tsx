@@ -1,12 +1,10 @@
 import React from "react";
-import {fetchAvvdata} from "./SWARequest";
-import Connections from "./components/swa/Connections";
+import Connections from "../components/swa/Connections";
 import {makeStyles} from "@material-ui/core/styles";
-import Clock from "./components/Clock/Clock";
-import Kalender from "./components/Calendar/Kalender";
-import Weather from "./components/Weather/Weather";
-import theme from "./theme";
-import FlagIcon from '@material-ui/icons/Flag';
+import Clock from "../components/Clock/Clock";
+import Kalender from "../components/Calendar/Kalender";
+import Weather from "../components/Weather/Weather";
+import theme from "../theme";
 
 const first = theme.palette.secondary.light;
 const second = theme.palette.info.main;
@@ -21,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
     topLeft: {
         position: "absolute",
+        top: "0%",
         width: "45%",
         height: "40%",
         overflow: "hidden",
@@ -182,14 +181,10 @@ Haltestellen: Rotes Tor: 2000116 Hochschule: 2000768
 
 const ScreenContainer: React.FC = () => {
     const classes = useStyles();
-    console.log("hccellodd")
     return (
         <>
-
-
-
             <div className={classes.topLeft}>
-                <Connections haltestelle="2000116" invertOrientation={false}/>
+                <Connections key={"2000116"} haltestelle="2000116" invertOrientation={false}/>
             </div>
 
 
@@ -216,7 +211,7 @@ const ScreenContainer: React.FC = () => {
             </div>
 
             <div className={classes.bottomLeft}>
-                <Connections haltestelle="2000768" invertOrientation={true}/>
+                <Connections key={"2000768"} haltestelle="2000768" invertOrientation={true}/>
             </div>
 
             <div className={classes.topRight}>

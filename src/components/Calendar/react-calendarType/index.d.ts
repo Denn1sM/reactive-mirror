@@ -4,7 +4,7 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 3.5
 
-import { MouseEvent, ChangeEvent, MutableRefObject, RefObject } from 'react';
+import {ChangeEvent, MouseEvent, MutableRefObject, RefObject} from 'react';
 
 export type CalendarType = "ISO 8601" | 'US' | 'Arabic' | 'Hebrew';
 export type Detail = 'month' | 'year' | 'decade' | 'century';

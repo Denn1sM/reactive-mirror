@@ -1,4 +1,4 @@
-import { getRange } from './dates';
+import {getRange} from './dates';
 
 /**
  * Returns a value no smaller than min and no larger than max.

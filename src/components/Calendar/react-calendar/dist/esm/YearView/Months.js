@@ -4,14 +4,16 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments);
+}
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getYear } from '@wojtekmaj/date-utils';
+import {getYear} from '@wojtekmaj/date-utils';
 import TileGroup from '../TileGroup';
 import Month from './Month';
-import { tileGroupProps } from '../shared/propTypes';
+import {tileGroupProps} from '../shared/propTypes';
+
 export default function Months(props) {
   var activeStartDate = props.activeStartDate;
   var start = 0;

@@ -1,7 +1,9 @@
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj);
+}
 
 import PropTypes from 'prop-types';
-import { CALENDAR_TYPES } from './const';
+import {CALENDAR_TYPES} from './const';
+
 var calendarTypes = Object.values(CALENDAR_TYPES);
 var allViews = ['century', 'decade', 'year', 'month'];
 export var isCalendarType = PropTypes.oneOf(calendarTypes);

@@ -1,8 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {makeStyles, Theme} from "@material-ui/core";
-import theme from "./theme";
-import {useParams} from "react-router-dom";
-import {Context} from "./state/Store";
+import theme from "../theme";
+import {Context} from "../state/Store";
 import "./animationStyle.css";
 
 const first = theme.palette.secondary.light;
@@ -10,8 +9,15 @@ const second = theme.palette.info.main;
 const third = theme.palette.info.dark;
 const useStyles = makeStyles((theme: Theme) => ({
 
+    background: {
+        width: "100%",
+        height: "100%",
+        position: "absolute",
+        top: "0%"
+    },
     movable: {
-        top: "40%",
+        position: "absolute",
+        top: "calc(50% - 60px)",
         height: "20%",
         width: "100%",
     },
@@ -79,26 +85,40 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Layout: React.FC = () => {
     const classes = useStyles();
 
-
-
     // @ts-ignore
     const [state, dispatch] = useContext(Context);
-    const [style, setStyle] = useState({className: ""});
+    const [animation, setAnimation] = useState("animationLeft");
+    const [backgroundAnimation, setBackgroundAnimation] = useState("animationBeBlack");
 
     useEffect(() => {
-        // @ts-ignore
-        console.log(state)
-    }, [state])
+        if(state.move === 1){
+            setAnimation("animationLeft")
+        } else {
+            setAnimation("animationRight")
+        }
+    }, [state.move])
 
-    const moveAnimation = () => {
-        console.log("Clicked")
-        setStyle({className: "animationFor"})
-    }
+    useEffect(() => {
+        if(state.fade === 1){
+            setBackgroundAnimation("animationFadeIn")
+        } else {
+            setBackgroundAnimation("animationBeBlack")
+        }
+    }, [state.fade])
+
+
+
+
+    //TODO: implement timer function to change animationFadeOut to AnimationFaceIn after 2s
 
     return (
         <>
-            <div className={classes.movable} onClick={moveAnimation}>
-                <div className={style.className}>
+
+            <div className={classes.background} >
+                <div className={backgroundAnimation} />
+            </div>
+            <div className={classes.movable} >
+                <div className={animation}>
                     <div className={classes.animation} />
                 </div>
             </div>

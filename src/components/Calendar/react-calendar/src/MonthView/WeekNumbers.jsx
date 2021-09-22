@@ -1,21 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  getYear,
-  getMonth,
-  getDate,
-  getDaysInMonth,
-} from '@wojtekmaj/date-utils';
+import {getDate, getDaysInMonth, getMonth, getYear,} from '@wojtekmaj/date-utils';
 
 import WeekNumber from './WeekNumber';
 import Flex from '../Flex';
 
-import {
-  getBeginOfWeek,
-  getDayOfWeek,
-  getWeekNumber,
-} from '../shared/dates';
-import { isCalendarType } from '../shared/propTypes';
+import {getBeginOfWeek, getDayOfWeek, getWeekNumber,} from '../shared/dates';
+import {isCalendarType} from '../shared/propTypes';
 
 export default function WeekNumbers(props) {
   const {

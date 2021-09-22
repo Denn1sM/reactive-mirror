@@ -5,10 +5,10 @@ const Reducer = (state: any, action: any) => {
                 ...state,
                 move: action.payload
             };
-        case 'MOVE_TO_LEFT':
+        case 'FADE':
             return {
                 ...state,
-                posts: state.posts.concat(action.payload)
+                fade: action.payload
             };
 
         case 'SET_ERROR':

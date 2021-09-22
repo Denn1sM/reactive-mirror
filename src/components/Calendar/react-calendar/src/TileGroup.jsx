@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import Flex from './Flex';
 
-import { getTileClasses } from './shared/utils';
-import { tileGroupProps } from './shared/propTypes';
+import {getTileClasses} from './shared/utils';
+import {tileGroupProps} from './shared/propTypes';
 
 export default function TileGroup({
   className,

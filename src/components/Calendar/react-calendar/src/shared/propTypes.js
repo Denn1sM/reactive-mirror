@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { CALENDAR_TYPES } from './const';
+import {CALENDAR_TYPES} from './const';
 
 const calendarTypes = Object.values(CALENDAR_TYPES);
 const allViews = ['century', 'decade', 'year', 'month'];
