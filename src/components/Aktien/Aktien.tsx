@@ -4,14 +4,17 @@ import StockChart from "./StockChart";
 // @ts-ignore
 import StockChartPercentage from "./StockChartPercentage";
 import {Context} from "../../state/Store";
+import StockInfo from "./StockInfo";
 
 const useStyles = makeStyles((theme) => ({
     chart: {
+        position: "absolute",
         height: "50%",
         width: "50%",
 
     },
     borderValues: {
+        position: "absolute",
         top: "70%",
         width: "50%",
         display: "flex",
@@ -33,6 +36,27 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "row"
     },
+    listsRight: {
+        position: "absolute",
+        top: "5ß0px",
+
+
+    },
+    listTop: {
+        position: "absolute",
+        width: "40%",
+        height: "50%",
+        left: "60%"
+
+    },
+    listBottom: {
+        position: "absolute",
+        width: "40%",
+        top: "50%",
+        height: "50%",
+        left: "60%"
+
+    }
 
 }));
 
@@ -60,6 +84,8 @@ const Aktien: React.FC<Props> = (props) => {
     const [stockName, setStockName] = useState("")
     const [startPrice, setStartPrice] = useState(0)
     const [endPrice, setEndPrice] = useState(0)
+
+    //TODO Api Key apikey api-key für Request f91a6ad6368eef5a33eef87d530af583
 
     useEffect(() => {
         fetch("https://financialmodelingprep.com/api/v3/historical-chart/5min/"+akn+"?apikey=f91a6ad6368eef5a33eef87d530af583")
@@ -105,6 +131,13 @@ if(chartData?.length > 4){
                     </div>
                 }
             </div>
+            <div className={classes.listTop}>
+                <StockInfo invertOrientation={false} akn={"AAPL"} />
+            </div>
+
+            <div className={classes.listBottom} >
+            </div>
+
 
         </>
     );
