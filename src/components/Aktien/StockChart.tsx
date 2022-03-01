@@ -25,7 +25,7 @@ const StockChart: React.FC<Props> = (props) => {
 
     const getLabels: any = () => {
         const array: Array<string> = []
-        props.chartData.map((e: infoElement) => array.push(e.date))
+        props.chartData.map((e: infoElement) => array.push(e.date.substring(0, 10)))
         return array
     }
 

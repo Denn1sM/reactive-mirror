@@ -3,6 +3,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import ScreenContainer from "./ScreenContainer";
 import Aktien from "../components/Aktien/Aktien";
 import Fade from "./Fade";
+import NotesComponent from "../components/notes/NotesComponent";
 
 
 const Router: React.FC = () => {
@@ -15,6 +16,10 @@ const Router: React.FC = () => {
                          <ScreenContainer/>
                      </Fade>
                  </Route>
+
+                <Route path="/note" exact>
+                        <NotesComponent/>
+                </Route>
 
                  <Route path="/aktien">
                      <Fade direction={0}>

@@ -11,7 +11,9 @@ const useStyles = makeStyles((theme) => ({
     list: {
         backgroundColor: "transparent",
         color: theme.palette.primary.contrastText,
-        fontSize: "15px",
+        fontSize: "20px",
+        fontWeight: "bolder",
+
     },
     listItem: {
         height: "55px",
@@ -39,11 +41,12 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.info.main,
         color: theme.palette.secondary.contrastText,
         height: "35px",
-        fontSize: "15px",
+        fontSize: "17px",
         width: "35px",
         fontFamily: "orbitron",
         animation: "$glowTram 4s infinite alternate",
-        boxShadow: `0px 0px 6px 3px ${theme.palette.info.main}`
+        boxShadow: `0px 0px 6px 3px ${theme.palette.info.main}`,
+        fontWeight: "bolder",
 
     },
 
@@ -70,10 +73,12 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.secondary.contrastText,
         height: "35px",
         width: "35px",
-        fontSize: "15px",
+        fontSize: "17px",
         fontFamily: "orbitron",
         animation: "$glowBus 4s infinite alternate",
-        boxShadow: `0px 0px 6px 3px ${theme.palette.secondary.main}`
+        boxShadow: `0px 0px 6px 3px ${theme.palette.secondary.main}`,
+        fontWeight: "bolder",
+
     },
     indenter: {
         paddingLeft: "20px",

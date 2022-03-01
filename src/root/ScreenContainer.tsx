@@ -44,9 +44,10 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
     },
     StopTop: {
-        width: "130px",
+        width: "140px",
         height: "50px",
-        fontSize: "14px",
+        fontWeight: "bolder",
+        fontSize: "17px",
         background: `linear-gradient(45deg, ${theme.palette.info.light} 30%, ${theme.palette.success.main} 90%), radial-gradient(${theme.palette.primary.contrastText}, ${theme.palette.info.light})`,
         fontFamily: "orbitron",
         WebkitBackgroundClip: "text !important",
@@ -54,9 +55,10 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center"
     },
     StopBottom: {
-        width: "130px",
+        width: "140px",
         height: "50px",
-        fontSize: "14px",
+        fontWeight: "bolder",
+        fontSize: "17px",
         fontFamily: "orbitron",
         WebkitBackgroundClip: "text !important",
         textFillColor: "transparent",

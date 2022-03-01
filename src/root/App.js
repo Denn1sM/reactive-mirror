@@ -10,7 +10,9 @@ const useStyles = makeStyles({
         backgroundColor: "black",
         margin: 0,
         width: "100%",
-        height: "100vh"
+        height: "100vh",
+        fontSize: "30px",
+        fontStyle: "bold"
     },
     layout: {
         position: "absolute"

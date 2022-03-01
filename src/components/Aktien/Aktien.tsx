@@ -9,8 +9,9 @@ import StockInfo from "./StockInfo";
 const useStyles = makeStyles((theme) => ({
     chart: {
         position: "absolute",
-        height: "50%",
-        width: "50%",
+        height: "45%",
+        left: "2%",
+        width: "45%",
 
     },
     borderValues: {
@@ -21,42 +22,6 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "30px",
         justifyContent: "space-around",
     },
-    initialValue: {
-        color: "white",
-        display: "flex",
-        flexDirection: "row"
-    },
-    lastValuePositive: {
-        color: "#64E702",
-        display: "flex",
-        flexDirection: "row"
-    },
-    lastValueNegative: {
-        color: "red",
-        display: "flex",
-        flexDirection: "row"
-    },
-    listsRight: {
-        position: "absolute",
-        top: "5ß0px",
-
-
-    },
-    listTop: {
-        position: "absolute",
-        width: "40%",
-        height: "50%",
-        left: "60%"
-
-    },
-    listBottom: {
-        position: "absolute",
-        width: "40%",
-        top: "50%",
-        height: "50%",
-        left: "60%"
-
-    }
 
 }));
 
@@ -102,40 +67,15 @@ const Aktien: React.FC<Props> = (props) => {
             })
     }, [])
 
-
+//TODO: StockNews (Pressemeldungen als bewegtes bild einfügen, API bietet den enpunkt)
 if(chartData?.length > 4){
     return (
         <>
             <div className={classes.chart}>
                 <StockChart chartData={chartData} name={stockName} />
             </div>
-            <div className={classes.borderValues}>
-                <div className={classes.initialValue}>
-                    <p>
-                    {startPrice}
-                    </p>
-                </div>
-
-
-                {(endPrice >= startPrice) ?
-                    <div className={classes.lastValuePositive}>
-                        <p>
-                            {endPrice}
-                        </p>
-                    </div>
-                    :
-                    <div className={classes.lastValueNegative}>
-                        <p>
-                            {endPrice}
-                        </p>
-                    </div>
-                }
-            </div>
-            <div className={classes.listTop}>
-                <StockInfo invertOrientation={false} akn={"AAPL"} />
-            </div>
-
-            <div className={classes.listBottom} >
+            <div>
+                <StockInfo startPrice={5345} endPrice={6546} akn={"AAPL"} />
             </div>
 
 

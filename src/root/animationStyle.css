@@ -4,7 +4,7 @@
     width: 120px;
     height: 120px;
     position: absolute;
-    left: 30px;
+    left: 10px;
 }
 .animationLeft {
     animation: moveLeft 4s forwards;
@@ -50,7 +50,7 @@
         transform: translateX(0px)
     }
     100% {
-        transform: translateX(-1340px)
+        transform: translateX(-1360px)
     }
 }
 
