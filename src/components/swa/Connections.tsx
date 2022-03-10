@@ -6,6 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import {IconButton} from "@material-ui/core";
+import {fetchData} from "./Request";
 
 const useStyles = makeStyles((theme) => ({
     list: {
@@ -166,13 +167,14 @@ const Connections: React.FC<Props> = (props) => {
     },
     ]
     setAlleVerbindungen(v)
+        fetchIt()
     }, [])
 
     const fetchIt = useCallback(async () => {
         console.log("Started fetch")
-        //const x = await fetchData(props.haltestelle);
-        //setAlleVerbindungen(x)
-        console.log(alleVerbindungen)
+        const x = await fetchData(props.haltestelle);
+        setAlleVerbindungen(x)
+        console.log(x)
 
     }, [])
 
@@ -183,7 +185,7 @@ const Connections: React.FC<Props> = (props) => {
     return (
         <div className={classes.list}>
             <List  className={classes.list}>
-                {alleVerbindungen?.map(verbindung => (
+                {alleVerbindungen?.map((verbindung, index) => (
                     <>
                         {props.invertOrientation
                             ?

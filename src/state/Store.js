@@ -1,7 +1,6 @@
 import React, {createContext, useReducer} from "react";
 import Reducer from './Reducer'
 
-
 const initialState = {
     move: 0,
     fade: 0,
@@ -21,3 +20,5 @@ const Store = ({children}) => {
 
 export const Context = createContext(initialState);
 export default Store;
+
+

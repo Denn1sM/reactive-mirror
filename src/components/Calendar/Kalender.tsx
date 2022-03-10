@@ -1,6 +1,5 @@
 import React from "react";
 import './react-calendar/dist/Calendar.css';
-import {makeStyles} from "@material-ui/core/styles";
 import Calendar from "./react-calendar/src";
 
 
