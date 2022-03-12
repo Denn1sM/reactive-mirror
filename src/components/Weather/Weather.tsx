@@ -5,9 +5,8 @@ import theme from "../../theme";
 import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-
     weather: {
-        flexGrow: 4,
+        minWidth: "700px"
     }
 }))
 
@@ -44,16 +43,15 @@ const Weather: React.FC = () => {
     });
     return (
         <div className={classes.weather}>
-        <ReactWeather
-            theme={customStyles}
-            isLoading={isLoading}
-            errorMessage={errorMessage}
-            data={data}
-            lang="de"
-            locationLabel="Augsburg"
-            unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
-            showForecast
-        />
+            <ReactWeather
+                theme={customStyles}
+                isLoading={isLoading}
+                errorMessage={errorMessage}
+                data={data}
+                lang="de"
+                locationLabel="Augsburg"
+                unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
+                showForecast/>
         </div>
     );
 }

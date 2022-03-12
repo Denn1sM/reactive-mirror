@@ -32,11 +32,11 @@ const useStyles = makeStyles((theme) => ({
         height: "20%",
         width: "100%",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
         alignItems: "center",
     },
     stopAndIcon: {
-        marginLeft: "3%",
+        //marginLeft: "3%",
         height: "450px",
         display: "flex",
         flexDirection: "column",
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "orbitron",
         WebkitBackgroundClip: "text !important",
         textFillColor: "transparent",
-        textAlign: "center"
+        //textAlign: "center"
     },
     StopBottom: {
         width: "140px",
@@ -61,9 +61,10 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "17px",
         fontFamily: "orbitron",
         WebkitBackgroundClip: "text !important",
+        color: "white",
         textFillColor: "transparent",
         background: `linear-gradient(45deg, ${theme.palette.secondary.light} 30%, ${theme.palette.secondary.main} 90%), radial-gradient(${theme.palette.primary.contrastText}, ${theme.palette.info.light})`,
-        textAlign: "center"
+        //textAlign: "center"
 
     },
     animation: {
@@ -73,8 +74,9 @@ const useStyles = makeStyles((theme) => ({
         animation: "$spin 25s infinite alternate",
 },
     clock: {
-        width: "200px",
-        paddingRight: "180px"
+        minWidth: "400px",
+        maxWidth: "400px",
+        paddingLeft: "140px"
     },
 
     animation2: {
@@ -101,12 +103,10 @@ const useStyles = makeStyles((theme) => ({
         left: "50%",
         height: "45%",
         width: "50%",
-        overflow: "hidden",
+        //overflow: "hidden",
         display: "flex",
-        justifyContent: "space-around",
         flexDirection: "row",
-        alignItems: "flex-start",
-
+        justifyContent: "flex-end"
     },
     spacerWide: {
         width: "100px",
@@ -209,7 +209,6 @@ const ScreenContainer: React.FC = () => {
                 <div className={classes.clock}>
                     <Clock />
                 </div>
-                <div className={classes.animation2}/>
             </div>
 
             <div className={classes.bottomLeft}>
@@ -217,25 +216,18 @@ const ScreenContainer: React.FC = () => {
             </div>
 
             <div className={classes.topRight}>
-                <div className={classes.spacerWide} />
                 <Weather />
-                <div className={classes.spacerSmall} />
-
             </div>
 
             <div className={classes.bottomRight}>
                 <Kalender/>
                 <div className={classes.spacerSmall}/>
             </div>
-
-
-
-
-
-
-
-
         </>
     );
 }
 export default ScreenContainer
+
+
+
+//                <div className={classes.animation2}/>

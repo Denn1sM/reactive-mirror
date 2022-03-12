@@ -7,24 +7,25 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import {IconButton} from "@material-ui/core";
 import {fetchData} from "./Request";
+import {getDummyConnections} from "../../functions/Functions";
 
 const useStyles = makeStyles((theme) => ({
     list: {
         backgroundColor: "transparent",
         color: theme.palette.primary.contrastText,
         fontSize: "20px",
-        fontWeight: "bolder",
+        fontWeight: "lighter",
 
     },
     listItem: {
         height: "55px",
-        width: "80%",
+        width: "300px",
         fontSize: "inherit",
         borderBottom: theme.palette.primary.light
 
     },
     content: {
-        fontFamily: "orbitron",
+        fontFamily: "Orbitron",
         display: "flex",
         flexDirection: "row",
         flexWrap: "nowrap",
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "orbitron",
         animation: "$glowTram 4s infinite alternate",
         boxShadow: `0px 0px 6px 3px ${theme.palette.info.main}`,
-        fontWeight: "bolder",
+        fontWeight: "bold",
 
     },
 
@@ -78,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "orbitron",
         animation: "$glowBus 4s infinite alternate",
         boxShadow: `0px 0px 6px 3px ${theme.palette.secondary.main}`,
-        fontWeight: "bolder",
+        fontWeight: "bold",
 
     },
     indenter: {
@@ -130,56 +131,24 @@ export interface Verbindung {
 const Connections: React.FC<Props> = (props) => {
     const classes = useStyles();
     const [alleVerbindungen, setAlleVerbindungen] = useState<Array<Verbindung> | void>();
-
+    const [lastRequestTime, setLastRequestTime] = useState<number>();
 
     useEffect(() => {
-
-    const v: Array<Verbindung> = [
-    {
-        time: "10:49",
-        linie: "1",
-        ziel: "Somewhere"
-
-    },
-        {
-        time: "10:49",
-        linie: "1",
-        ziel: "Somewhere"
-
-    },
-        {
-        time: "10:49",
-        linie: "25",
-        ziel: "Somewhere"
-
-    },
-        {
-        time: "10:49",
-        linie: "1",
-        ziel: "Somewhere"
-
-    },
-        {
-        time: "10:49",
-        linie: "1",
-        ziel: "Somewhere"
-
-    },
-    ]
-    setAlleVerbindungen(v)
+        setAlleVerbindungen(getDummyConnections())
         fetchIt()
+        setInterval(() => fetchIt(), 60000);
     }, [])
 
     const fetchIt = useCallback(async () => {
         console.log("Started fetch")
-        const x = await fetchData(props.haltestelle);
-        setAlleVerbindungen(x)
-        console.log(x)
-
+        if(!lastRequestTime || (lastRequestTime && lastRequestTime < (Date.now() - 60000))){
+            const x = await fetchData(props.haltestelle);
+            setAlleVerbindungen(x)
+            setLastRequestTime(Date.now())
+            console.log("----------Fetched---------")
+        }
     }, [])
 
-
-    setInterval(() => fetchIt(), 100000);
     const trams = ["1", "2", "3", "4", "5", "6"]
 
     return (
@@ -189,7 +158,7 @@ const Connections: React.FC<Props> = (props) => {
                     <>
                         {props.invertOrientation
                             ?
-                            <div className={classes.indenterInverted}>
+                            <div key={index} className={classes.indenterInverted}>
 
                                 <ListItem className={classes.listItem}>
 
@@ -218,9 +187,9 @@ const Connections: React.FC<Props> = (props) => {
                                 </ListItem>
                             </div>
                             :
-                            <div className={classes.indenter}>
+                            <div key={index} className={classes.indenter}>
 
-                            <ListItem key={Math.random()} className={classes.listItem}>
+                            <ListItem className={classes.listItem}>
 
                             <ListItemIcon>
                         {trams.includes(verbindung.linie) ?

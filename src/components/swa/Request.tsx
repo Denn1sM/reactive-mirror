@@ -14,7 +14,9 @@ export const fetchData = async (einstieg: string) => {
     let hour = ("0" + date.getHours()).slice(-2);
     let minute = ("0" + date.getMinutes()).slice(-2);
     const currentTime = hour + minute;
-    return fetch("http://localhost:8010/proxy/avv2/XSLT_DM_REQUEST", {
+    //https://cors-anywhere.herokuapp.com/https://www.api.com/
+    //return fetch("http://localhost:8010/proxy/avv2/XSLT_DM_REQUEST", {
+    return fetch("https://thingproxy.freeboard.io/fetch/https://efa.avv-augsburg.de/avv2/XSLT_DM_REQUEST", {
         //  const res = fetch("https://efa.avv-augsburg.de/avv2/XSLT_TRIP_REQUEST2?sessionID=0&requestID=0&language=de&commonMacro=true&canChangeMOT=0&type_origin=any&type_destination=any&trITMOTvalue100=10&useProxFootSearch=1",
         headers: {
             accept: "*/*",
@@ -50,7 +52,6 @@ export const fetchData = async (einstieg: string) => {
             for (let i = 0; i < 10; i++) {
                 let elem = response.indexOf("dmTr");
                 response = response.slice(elem, response.length);
-                console.log(response);
 
                 let abfahrtsZeitIndex = response.indexOf("time ");
                 let abfahrtsZeit = response.slice(abfahrtsZeitIndex + 38, abfahrtsZeitIndex + 43);
