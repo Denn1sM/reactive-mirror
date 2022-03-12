@@ -35,6 +35,7 @@
     "go": "concurrently \"npm run start\" \"npm run proxy\"",
     "start": "set port=8080 && react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "\".\\post_build.cmd\"",
     "proxy": "lcp --proxyUrl https://efa.avv-augsburg.de",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

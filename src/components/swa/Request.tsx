@@ -25,6 +25,7 @@ export const fetchData = async (einstieg: string) => {
             "sec-ch-ua": '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
             "sec-ch-ua-mobile": "?0",
             "sec-fetch-dest": "empty",
+            "Access-Control-Allow-Origin": "*",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "same-origin",
             "x-requested-with": "XMLHttpRequest"
