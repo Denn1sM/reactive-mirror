@@ -133,21 +133,23 @@ const Connections: React.FC<Props> = (props) => {
     const [alleVerbindungen, setAlleVerbindungen] = useState<Array<Verbindung> | void>();
     const [lastRequestTime, setLastRequestTime] = useState<number>();
 
-    useEffect(() => {
-        setAlleVerbindungen(getDummyConnections())
-        fetchIt()
-        setInterval(() => fetchIt(), 60000);
-    }, [])
-
     const fetchIt = useCallback(async () => {
         console.log("Started fetch")
         if(!lastRequestTime || (lastRequestTime && lastRequestTime < (Date.now() - 60000))){
             const x = await fetchData(props.haltestelle);
             setAlleVerbindungen(x)
             setLastRequestTime(Date.now())
+            console.log(x)
             console.log("----------Fetched---------")
         }
     }, [])
+
+
+    useEffect(() => {
+        setAlleVerbindungen(getDummyConnections())
+        fetchIt()
+        setInterval(() => fetchIt(), 60000);
+    }, [fetchIt])
 
     const trams = ["1", "2", "3", "4", "5", "6"]
 

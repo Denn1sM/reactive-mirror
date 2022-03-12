@@ -2,7 +2,7 @@ import {Verbindung} from "./Connections";
 
 
 export const fetchData = async (einstieg: string) => {
-    const alleVerbindungen: Array<Verbindung> = Array();
+    const alleVerbindungen: Array<Verbindung> = [];
 
 
     const date = new Date();
@@ -16,17 +16,24 @@ export const fetchData = async (einstieg: string) => {
     const currentTime = hour + minute;
     //https://cors-anywhere.herokuapp.com/https://www.api.com/
     //return fetch("http://localhost:8010/proxy/avv2/XSLT_DM_REQUEST", {
+
+    /*
+
     return fetch("https://thingproxy.freeboard.io/fetch/https://efa.avv-augsburg.de/avv2/XSLT_DM_REQUEST", {
         //  const res = fetch("https://efa.avv-augsburg.de/avv2/XSLT_TRIP_REQUEST2?sessionID=0&requestID=0&language=de&commonMacro=true&canChangeMOT=0&type_origin=any&type_destination=any&trITMOTvalue100=10&useProxFootSearch=1",
         headers: {
-            accept: "*/*",
+        */
+    //   accept: "*/*",
+    /*
             "accept-language": "de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7",
             "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
             "sec-ch-ua": '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
             "sec-ch-ua-mobile": "?0",
             "sec-fetch-dest": "empty",
             "Access-Control-Allow-Origin": "*",
-            "sec-fetch-mode": "cors",
+            "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
+            //"sec-fetch-mode": "cors",
             "sec-fetch-site": "same-origin",
             "x-requested-with": "XMLHttpRequest"
         },
@@ -43,7 +50,7 @@ export const fetchData = async (einstieg: string) => {
             currentTime +
             "& useAllStops=1",
         method: "POST",
-        mode: "cors",
+        mode: "no-cors",
         credentials: "omit"
         //Response.text gibt das dokument als plain html zurück
         //div class "mdv_departureInformations" enthält alle erhaltenen Abfahrtszeiten
@@ -53,7 +60,7 @@ export const fetchData = async (einstieg: string) => {
             for (let i = 0; i < 10; i++) {
                 let elem = response.indexOf("dmTr");
                 response = response.slice(elem, response.length);
-
+                console.log(response)
                 let abfahrtsZeitIndex = response.indexOf("time ");
                 let abfahrtsZeit = response.slice(abfahrtsZeitIndex + 38, abfahrtsZeitIndex + 43);
                 let linieIndex = response.indexOf("mdv_singleDepInfo");
@@ -72,3 +79,31 @@ export const fetchData = async (einstieg: string) => {
         });
 }
 
+*/
+
+    return fetch(`/avv/${einstieg}/${dateString}/${currentTime}`)
+        .then(awaitedResponse => {
+            console.log(awaitedResponse)
+            return awaitedResponse.text()
+        })
+        .then((response) => {
+            for (let i = 0; i < 10; i++) {
+                let elem = response.indexOf("dmTr");
+                response = response.slice(elem, response.length);
+                let abfahrtsZeitIndex = response.indexOf("time ");
+                let abfahrtsZeit = response.slice(abfahrtsZeitIndex + 38, abfahrtsZeitIndex + 43);
+                let linieIndex = response.indexOf("mdv_singleDepInfo");
+                let linieEndIndex = response.indexOf("Bstg.");
+                let linieNummer = response.slice(linieIndex + 19, linieIndex + 22).replace("/", "").trim()
+                let ziel = response.slice(linieIndex + "mdv_singleDepInfo".length + 6, linieEndIndex);
+                let verbindung = {
+                    time: abfahrtsZeit,
+                    linie: linieNummer,
+                    ziel: ziel
+                };
+                alleVerbindungen.push(verbindung);
+                response = response.slice(5, response.length);
+            }
+            return alleVerbindungen;
+        });
+}

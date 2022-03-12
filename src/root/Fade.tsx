@@ -11,7 +11,10 @@ const Fade: React.FC<Props> = ({direction, children}) => {
     const [displayChildren, setDisplayChildren] = useState(false);
     // @ts-ignore
     const [state, dispatch] = useContext(Context);
-
+    const runAfterTimeout = () => {
+        setDisplayChildren(true)
+        dispatch({type: "FADE", payload: 1})
+    }
     useEffect(() => {
         console.log("Fade called")
         dispatch({type: "MOVE", payload: direction})
@@ -33,10 +36,7 @@ hier move=1 für nach links
 
  */
 
-    const runAfterTimeout = () => {
-        setDisplayChildren(true)
-        dispatch({type: "FADE", payload: 1})
-    }
+
     return (
         <>
             {children}
