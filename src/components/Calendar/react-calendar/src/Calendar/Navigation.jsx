@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getUserLocale} from 'get-user-locale';
+import { getUserLocale } from 'get-user-locale';
 
 import {
-    getBeginNext,
-    getBeginNext2,
-    getBeginPrevious,
-    getBeginPrevious2,
-    getCenturyLabel,
-    getDecadeLabel,
-    getEndPrevious,
-    getEndPrevious2,
+  getBeginNext,
+  getBeginNext2,
+  getBeginPrevious,
+  getBeginPrevious2,
+  getCenturyLabel,
+  getDecadeLabel,
+  getEndPrevious,
+  getEndPrevious2,
 } from '../shared/dates';
-import {formatMonthYear as defaultFormatMonthYear, formatYear as defaultFormatYear,} from '../shared/dateFormatter';
-import {isView, isViews} from '../shared/propTypes';
+import { formatMonthYear as defaultFormatMonthYear, formatYear as defaultFormatYear } from '../shared/dateFormatter';
+import { isView, isViews } from '../shared/propTypes';
 
 const className = 'react-calendar__navigation';
 
@@ -46,7 +46,7 @@ export default function Navigation({
   const previousActiveStartDate = getBeginPrevious(view, activeStartDate);
   const previousActiveStartDate2 = (
     shouldShowPrevNext2Buttons
-    && getBeginPrevious2(view, activeStartDate)
+        && getBeginPrevious2(view, activeStartDate)
   );
   const nextActiveStartDate = getBeginNext(view, activeStartDate);
   const nextActiveStartDate2 = shouldShowPrevNext2Buttons && getBeginNext2(view, activeStartDate);
@@ -71,8 +71,8 @@ export default function Navigation({
 
   const next2ButtonDisabled = (
     shouldShowPrevNext2Buttons
-    && maxDate
-    && maxDate <= nextActiveStartDate2
+        && maxDate
+        && maxDate <= nextActiveStartDate2
   );
 
   function onClickPrevious() {
@@ -134,16 +134,16 @@ export default function Navigation({
           {renderLabel(activeStartDate)}
         </span>
         {showDoubleView && (
-          <>
-            <span className={`${labelClassName}__divider`}>
-              {' '}
-              –
-              {' '}
-            </span>
-            <span className={`${labelClassName}__labelText ${labelClassName}__labelText--to`}>
-              {renderLabel(nextActiveStartDate)}
-            </span>
-          </>
+        <>
+          <span className={`${labelClassName}__divider`}>
+            {' '}
+            –
+            {' '}
+          </span>
+          <span className={`${labelClassName}__labelText ${labelClassName}__labelText--to`}>
+            {renderLabel(nextActiveStartDate)}
+          </span>
+        </>
         )}
       </button>
     );

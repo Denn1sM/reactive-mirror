@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount} from 'enzyme';
+import { mount } from 'enzyme';
 
 import Day from './Day';
 
@@ -34,7 +34,7 @@ describe('Day', () => {
     const component = mount(
       <Day
         {...tileProps}
-        date={new Date(2018, 0, 6)} // Saturday
+        date={new Date(2018, 0, 6)}
       />,
     );
 

@@ -6,12 +6,12 @@ export const formatMoney = (labelValue?: number): string => {
         // Six Zeroes for Millions
         : Math.abs(Number(labelValue)) >= 1.0e+6
 
-        ? (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + " Mio $"
-        // Three Zeroes for Thousands
-        : Math.abs(Number(labelValue)) >= 1.0e+3
+            ? (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + " Mio $"
+            // Three Zeroes for Thousands
+            : Math.abs(Number(labelValue)) >= 1.0e+3
 
-        ? (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + " Tsd"
+                ? (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + " Tsd"
 
-        : Math.abs(Number(labelValue)) + " $";
+                : Math.abs(Number(labelValue)) + " $";
 
 }

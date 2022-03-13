@@ -1,19 +1,20 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+Object.defineProperty(exports, '__esModule', {
+  value: true,
 });
 exports.formatWeekday = exports.formatShortWeekday = exports.formatYear = exports.formatMonthYear = exports.formatMonth = exports.formatLongDate = exports.formatDate = void 0;
 
-var _getUserLocale = _interopRequireDefault(require("get-user-locale"));
+const _getUserLocale = _interopRequireDefault(require('get-user-locale'));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 function getFormatter(options) {
   return function (locale, date) {
-    return date.toLocaleString(locale || (0, _getUserLocale["default"])(), options);
+    return date.toLocaleString(locale || (0, _getUserLocale.default)(), options);
   };
 }
+
 /**
  * Changes the hour in a Date to ensure right date formatting even if DST is messed up.
  * Workaround for bug in WebKit and Firefox with historical dates.
@@ -24,9 +25,8 @@ function getFormatter(options) {
  * @param {Date} date Date.
  */
 
-
 function toSafeHour(date) {
-  var safeDate = new Date(date);
+  const safeDate = new Date(date);
   return new Date(safeDate.setHours(12));
 }
 
@@ -36,43 +36,43 @@ function getSafeFormatter(options) {
   };
 }
 
-var formatDateOptions = {
+const formatDateOptions = {
   day: 'numeric',
   month: 'numeric',
-  year: 'numeric'
+  year: 'numeric',
 };
-var formatLongDateOptions = {
+const formatLongDateOptions = {
   day: 'numeric',
   month: 'long',
-  year: 'numeric'
+  year: 'numeric',
 };
-var formatMonthOptions = {
-  month: 'long'
-};
-var formatMonthYearOptions = {
+const formatMonthOptions = {
   month: 'long',
-  year: 'numeric'
 };
-var formatYearOptions = {
-  year: 'numeric'
+const formatMonthYearOptions = {
+  month: 'long',
+  year: 'numeric',
 };
-var formatShortWeekdayOptions = {
-  weekday: 'short'
+const formatYearOptions = {
+  year: 'numeric',
 };
-var formatWeekdayOptions = {
-  weekday: 'long'
+const formatShortWeekdayOptions = {
+  weekday: 'short',
 };
-var formatDate = getSafeFormatter(formatDateOptions);
+const formatWeekdayOptions = {
+  weekday: 'long',
+};
+const formatDate = getSafeFormatter(formatDateOptions);
 exports.formatDate = formatDate;
-var formatLongDate = getSafeFormatter(formatLongDateOptions);
+const formatLongDate = getSafeFormatter(formatLongDateOptions);
 exports.formatLongDate = formatLongDate;
-var formatMonth = getSafeFormatter(formatMonthOptions);
+const formatMonth = getSafeFormatter(formatMonthOptions);
 exports.formatMonth = formatMonth;
-var formatMonthYear = getSafeFormatter(formatMonthYearOptions);
+const formatMonthYear = getSafeFormatter(formatMonthYearOptions);
 exports.formatMonthYear = formatMonthYear;
-var formatYear = getSafeFormatter(formatYearOptions);
+const formatYear = getSafeFormatter(formatYearOptions);
 exports.formatYear = formatYear;
-var formatShortWeekday = getSafeFormatter(formatShortWeekdayOptions);
+const formatShortWeekday = getSafeFormatter(formatShortWeekdayOptions);
 exports.formatShortWeekday = formatShortWeekday;
-var formatWeekday = getSafeFormatter(formatWeekdayOptions);
+const formatWeekday = getSafeFormatter(formatWeekdayOptions);
 exports.formatWeekday = formatWeekday;

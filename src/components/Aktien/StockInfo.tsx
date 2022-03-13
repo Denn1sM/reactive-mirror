@@ -145,8 +145,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export interface InfoElement {
-    symbol : string;
-    date : string;
+    symbol: string;
+    date: string;
     stockPrice: number;
     numberOfShares: number;
     marketCapitalization: number;
@@ -171,18 +171,18 @@ const StockInfo: React.FC<Props> = (props) => {
 
     useEffect(() => {
 
-    const v: InfoElement = {
-            "symbol" : "AAPL",
-            "date" : "2019-09-28",
-            "stockPrice" : 62.262501,
-            "numberOfShares" : 4648913000,
-            "marketCapitalization" : 289452950311.413,
-            "minusCashAndCashEquivalents" : 48844000000,
-            "addTotalDebt" : 97787000000,
-            "enterpriseValue" : 338395950311.413
+        const v: InfoElement = {
+            "symbol": "AAPL",
+            "date": "2019-09-28",
+            "stockPrice": 62.262501,
+            "numberOfShares": 4648913000,
+            "marketCapitalization": 289452950311.413,
+            "minusCashAndCashEquivalents": 48844000000,
+            "addTotalDebt": 97787000000,
+            "enterpriseValue": 338395950311.413
         }
 
-    setInfoElem(v)
+        setInfoElem(v)
     }, [])
 
     const fetchGeneralInfo = () => {
@@ -195,8 +195,7 @@ const StockInfo: React.FC<Props> = (props) => {
                             setInfoElem(j[0])
                         }
                     })
-                }
-                catch(err){
+                } catch (err) {
                     console.log(err)
                 }
             })
@@ -215,8 +214,8 @@ const StockInfo: React.FC<Props> = (props) => {
 
 
     const formatPercent = (): string => {
-        const value = (((props.endPrice-props.startPrice)/startPrice)*100).toString().substring(0, 6)
-        const formatted = value.substring(0,1) === "-" ? value.substring(0, 6) : value.substring(0,5)
+        const value = (((props.endPrice - props.startPrice) / startPrice) * 100).toString().substring(0, 6)
+        const formatted = value.substring(0, 1) === "-" ? value.substring(0, 6) : value.substring(0, 5)
         return formatted + "%"
 
 
@@ -225,26 +224,26 @@ const StockInfo: React.FC<Props> = (props) => {
     return (
         <>
             <div className={classes.right}>
-            <List  className={classes.list}>
-                <>
-                    <div className={classes.indenter}>
+                <List className={classes.list}>
+                    <>
+                        <div className={classes.indenter}>
 
-                        <ListItem className={classes.listItem}>
-                            <ListItemText className={classes.content} disableTypography>
-                                <div className={classes.time}>
-                                    KAP:
-                                </div>
-                                <div className={classes.abbreviation}>
-                                    {formatMoney(infoelem?.marketCapitalization)}
-                                </div>
-                                <Divider className={classes.divider} variant="inset"/>
-                            </ListItemText>
-                        </ListItem>
+                            <ListItem className={classes.listItem}>
+                                <ListItemText className={classes.content} disableTypography>
+                                    <div className={classes.time}>
+                                        KAP:
+                                    </div>
+                                    <div className={classes.abbreviation}>
+                                        {formatMoney(infoelem?.marketCapitalization)}
+                                    </div>
+                                    <Divider className={classes.divider} variant="inset"/>
+                                </ListItemText>
+                            </ListItem>
 
-                    </div>
+                        </div>
 
-                    <div className={classes.indenter}>
-                        <ListItem className={classes.listItem}>
+                        <div className={classes.indenter}>
+                            <ListItem className={classes.listItem}>
                                 <ListItemText className={classes.content} disableTypography>
                                     <div className={classes.time}>
                                         -CASH:
@@ -255,10 +254,10 @@ const StockInfo: React.FC<Props> = (props) => {
                                     <Divider className={classes.divider} variant="inset"/>
                                 </ListItemText>
                             </ListItem>
-                    </div>
+                        </div>
 
-                    <div className={classes.indenter}>
-                        <ListItem className={classes.listItem}>
+                        <div className={classes.indenter}>
+                            <ListItem className={classes.listItem}>
                                 <ListItemText className={classes.content} disableTypography>
                                     <div className={classes.time}>
                                         +DEBT:
@@ -269,10 +268,10 @@ const StockInfo: React.FC<Props> = (props) => {
                                     <Divider className={classes.divider} variant="inset"/>
                                 </ListItemText>
                             </ListItem>
-                    </div>
+                        </div>
 
-                    <div className={classes.indenter}>
-                        <ListItem className={classes.listItem}>
+                        <div className={classes.indenter}>
+                            <ListItem className={classes.listItem}>
                                 <ListItemText className={classes.content} disableTypography>
                                     <div className={classes.time}>
                                         EV:
@@ -283,10 +282,10 @@ const StockInfo: React.FC<Props> = (props) => {
                                     <Divider className={classes.divider} variant="inset"/>
                                 </ListItemText>
                             </ListItem>
-                    </div>
+                        </div>
 
-                    <div className={classes.indenter}>
-                        <ListItem className={classes.listItem}>
+                        <div className={classes.indenter}>
+                            <ListItem className={classes.listItem}>
                                 <ListItemText className={classes.content} disableTypography>
                                     <div className={classes.time}>
                                         EV:
@@ -297,19 +296,19 @@ const StockInfo: React.FC<Props> = (props) => {
                                     <Divider className={classes.divider} variant="inset"/>
                                 </ListItemText>
                             </ListItem>
-                    </div>
+                        </div>
 
 
                     </>
 
-            </List>
+                </List>
             </div>
 
 
             <div className={classes.middle}>
                 <div className={classes.middleLeft}>
                     <div className={classes.initialValue}>
-                            {startPrice}
+                        {startPrice}
                     </div>
 
 

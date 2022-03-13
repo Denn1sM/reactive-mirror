@@ -1,80 +1,80 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getUserLocale} from 'get-user-locale';
+import { getUserLocale } from 'get-user-locale';
 import {
-    getBeginNext,
-    getBeginNext2,
-    getBeginPrevious,
-    getBeginPrevious2,
-    getCenturyLabel,
-    getDecadeLabel,
-    getEndPrevious,
-    getEndPrevious2
+  getBeginNext,
+  getBeginNext2,
+  getBeginPrevious,
+  getBeginPrevious2,
+  getCenturyLabel,
+  getDecadeLabel,
+  getEndPrevious,
+  getEndPrevious2,
 } from '../shared/dates';
-import {formatMonthYear as defaultFormatMonthYear, formatYear as defaultFormatYear} from '../shared/dateFormatter';
-import {isView, isViews} from '../shared/propTypes';
+import { formatMonthYear as defaultFormatMonthYear, formatYear as defaultFormatYear } from '../shared/dateFormatter';
+import { isView, isViews } from '../shared/propTypes';
 
-var className = 'react-calendar__navigation';
+const className = 'react-calendar__navigation';
 export default function Navigation(_ref) {
-  var activeStartDate = _ref.activeStartDate,
-      drillUp = _ref.drillUp,
-      _ref$formatMonthYear = _ref.formatMonthYear,
-      formatMonthYear = _ref$formatMonthYear === void 0 ? defaultFormatMonthYear : _ref$formatMonthYear,
-      _ref$formatYear = _ref.formatYear,
-      formatYear = _ref$formatYear === void 0 ? defaultFormatYear : _ref$formatYear,
-      locale = _ref.locale,
-      maxDate = _ref.maxDate,
-      minDate = _ref.minDate,
-      _ref$navigationAriaLa = _ref.navigationAriaLabel,
-      navigationAriaLabel = _ref$navigationAriaLa === void 0 ? '' : _ref$navigationAriaLa,
-      navigationLabel = _ref.navigationLabel,
-      _ref$next2AriaLabel = _ref.next2AriaLabel,
-      next2AriaLabel = _ref$next2AriaLabel === void 0 ? '' : _ref$next2AriaLabel,
-      _ref$next2Label = _ref.next2Label,
-      next2Label = _ref$next2Label === void 0 ? '»' : _ref$next2Label,
-      _ref$nextAriaLabel = _ref.nextAriaLabel,
-      nextAriaLabel = _ref$nextAriaLabel === void 0 ? '' : _ref$nextAriaLabel,
-      _ref$nextLabel = _ref.nextLabel,
-      nextLabel = _ref$nextLabel === void 0 ? '›' : _ref$nextLabel,
-      _ref$prev2AriaLabel = _ref.prev2AriaLabel,
-      prev2AriaLabel = _ref$prev2AriaLabel === void 0 ? '' : _ref$prev2AriaLabel,
-      _ref$prev2Label = _ref.prev2Label,
-      prev2Label = _ref$prev2Label === void 0 ? '«' : _ref$prev2Label,
-      _ref$prevAriaLabel = _ref.prevAriaLabel,
-      prevAriaLabel = _ref$prevAriaLabel === void 0 ? '' : _ref$prevAriaLabel,
-      _ref$prevLabel = _ref.prevLabel,
-      prevLabel = _ref$prevLabel === void 0 ? '‹' : _ref$prevLabel,
-      setActiveStartDate = _ref.setActiveStartDate,
-      showDoubleView = _ref.showDoubleView,
-      view = _ref.view,
-      views = _ref.views;
-  var drillUpAvailable = views.indexOf(view) > 0;
-  var shouldShowPrevNext2Buttons = view !== 'century';
-  var previousActiveStartDate = getBeginPrevious(view, activeStartDate);
-  var previousActiveStartDate2 = shouldShowPrevNext2Buttons && getBeginPrevious2(view, activeStartDate);
-  var nextActiveStartDate = getBeginNext(view, activeStartDate);
-  var nextActiveStartDate2 = shouldShowPrevNext2Buttons && getBeginNext2(view, activeStartDate);
+  const { activeStartDate } = _ref;
+  const { drillUp } = _ref;
+  const _ref$formatMonthYear = _ref.formatMonthYear;
+  const formatMonthYear = _ref$formatMonthYear === void 0 ? defaultFormatMonthYear : _ref$formatMonthYear;
+  const _ref$formatYear = _ref.formatYear;
+  const formatYear = _ref$formatYear === void 0 ? defaultFormatYear : _ref$formatYear;
+  const { locale } = _ref;
+  const { maxDate } = _ref;
+  const { minDate } = _ref;
+  const _ref$navigationAriaLa = _ref.navigationAriaLabel;
+  const navigationAriaLabel = _ref$navigationAriaLa === void 0 ? '' : _ref$navigationAriaLa;
+  const { navigationLabel } = _ref;
+  const _ref$next2AriaLabel = _ref.next2AriaLabel;
+  const next2AriaLabel = _ref$next2AriaLabel === void 0 ? '' : _ref$next2AriaLabel;
+  const _ref$next2Label = _ref.next2Label;
+  const next2Label = _ref$next2Label === void 0 ? '»' : _ref$next2Label;
+  const _ref$nextAriaLabel = _ref.nextAriaLabel;
+  const nextAriaLabel = _ref$nextAriaLabel === void 0 ? '' : _ref$nextAriaLabel;
+  const _ref$nextLabel = _ref.nextLabel;
+  const nextLabel = _ref$nextLabel === void 0 ? '›' : _ref$nextLabel;
+  const _ref$prev2AriaLabel = _ref.prev2AriaLabel;
+  const prev2AriaLabel = _ref$prev2AriaLabel === void 0 ? '' : _ref$prev2AriaLabel;
+  const _ref$prev2Label = _ref.prev2Label;
+  const prev2Label = _ref$prev2Label === void 0 ? '«' : _ref$prev2Label;
+  const _ref$prevAriaLabel = _ref.prevAriaLabel;
+  const prevAriaLabel = _ref$prevAriaLabel === void 0 ? '' : _ref$prevAriaLabel;
+  const _ref$prevLabel = _ref.prevLabel;
+  const prevLabel = _ref$prevLabel === void 0 ? '‹' : _ref$prevLabel;
+  const { setActiveStartDate } = _ref;
+  const { showDoubleView } = _ref;
+  const { view } = _ref;
+  const { views } = _ref;
+  const drillUpAvailable = views.indexOf(view) > 0;
+  const shouldShowPrevNext2Buttons = view !== 'century';
+  const previousActiveStartDate = getBeginPrevious(view, activeStartDate);
+  const previousActiveStartDate2 = shouldShowPrevNext2Buttons && getBeginPrevious2(view, activeStartDate);
+  const nextActiveStartDate = getBeginNext(view, activeStartDate);
+  const nextActiveStartDate2 = shouldShowPrevNext2Buttons && getBeginNext2(view, activeStartDate);
 
-  var prevButtonDisabled = function () {
+  const prevButtonDisabled = (function () {
     if (previousActiveStartDate.getFullYear() < 0) {
       return true;
     }
 
-    var previousActiveEndDate = getEndPrevious(view, activeStartDate);
+    const previousActiveEndDate = getEndPrevious(view, activeStartDate);
     return minDate && minDate >= previousActiveEndDate;
-  }();
+  }());
 
-  var prev2ButtonDisabled = shouldShowPrevNext2Buttons && function () {
+  const prev2ButtonDisabled = shouldShowPrevNext2Buttons && (function () {
     if (previousActiveStartDate2.getFullYear() < 0) {
       return true;
     }
 
-    var previousActiveEndDate = getEndPrevious2(view, activeStartDate);
+    const previousActiveEndDate = getEndPrevious2(view, activeStartDate);
     return minDate && minDate >= previousActiveEndDate;
-  }();
+  }());
 
-  var nextButtonDisabled = maxDate && maxDate <= nextActiveStartDate;
-  var next2ButtonDisabled = shouldShowPrevNext2Buttons && maxDate && maxDate <= nextActiveStartDate2;
+  const nextButtonDisabled = maxDate && maxDate <= nextActiveStartDate;
+  const next2ButtonDisabled = shouldShowPrevNext2Buttons && maxDate && maxDate <= nextActiveStartDate2;
 
   function onClickPrevious() {
     setActiveStartDate(previousActiveStartDate);
@@ -93,7 +93,7 @@ export default function Navigation(_ref) {
   }
 
   function renderLabel(date) {
-    var label = function () {
+    const label = (function () {
       switch (view) {
         case 'century':
           return getCenturyLabel(locale, formatYear, date);
@@ -108,67 +108,67 @@ export default function Navigation(_ref) {
           return formatMonthYear(locale, date);
 
         default:
-          throw new Error("Invalid view: ".concat(view, "."));
+          throw new Error('Invalid view: '.concat(view, '.'));
       }
-    }();
+    }());
 
     return navigationLabel ? navigationLabel({
-      date: date,
-      label: label,
+      date,
+      label,
       locale: locale || getUserLocale(),
-      view: view
+      view,
     }) : label;
   }
 
   function renderButton() {
-    var labelClassName = "".concat(className, "__label");
-    return /*#__PURE__*/React.createElement("button", {
-      "aria-label": navigationAriaLabel,
+    const labelClassName = ''.concat(className, '__label');
+    return /* #__PURE__ */React.createElement('button', {
+      'aria-label': navigationAriaLabel,
       className: labelClassName,
       disabled: !drillUpAvailable,
       onClick: drillUp,
       style: {
-        flexGrow: 1
+        flexGrow: 1,
       },
-      type: "button"
-    }, /*#__PURE__*/React.createElement("span", {
-      className: "".concat(labelClassName, "__labelText ").concat(labelClassName, "__labelText--from")
-    }, renderLabel(activeStartDate)), showDoubleView && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
-      className: "".concat(labelClassName, "__divider")
-    }, ' ', "\u2013", ' '), /*#__PURE__*/React.createElement("span", {
-      className: "".concat(labelClassName, "__labelText ").concat(labelClassName, "__labelText--to")
+      type: 'button',
+    }, /* #__PURE__ */React.createElement('span', {
+      className: ''.concat(labelClassName, '__labelText ').concat(labelClassName, '__labelText--from'),
+    }, renderLabel(activeStartDate)), showDoubleView && /* #__PURE__ */React.createElement(React.Fragment, null, /* #__PURE__ */React.createElement('span', {
+      className: ''.concat(labelClassName, '__divider'),
+    }, ' ', '\u2013', ' '), /* #__PURE__ */React.createElement('span', {
+      className: ''.concat(labelClassName, '__labelText ').concat(labelClassName, '__labelText--to'),
     }, renderLabel(nextActiveStartDate))));
   }
 
-  return /*#__PURE__*/React.createElement("div", {
-    className: className,
+  return /* #__PURE__ */React.createElement('div', {
+    className,
     style: {
-      display: 'flex'
-    }
-  }, prev2Label !== null && shouldShowPrevNext2Buttons && /*#__PURE__*/React.createElement("button", {
-    "aria-label": prev2AriaLabel,
-    className: "".concat(className, "__arrow ").concat(className, "__prev2-button"),
+      display: 'flex',
+    },
+  }, prev2Label !== null && shouldShowPrevNext2Buttons && /* #__PURE__ */React.createElement('button', {
+    'aria-label': prev2AriaLabel,
+    className: ''.concat(className, '__arrow ').concat(className, '__prev2-button'),
     disabled: prev2ButtonDisabled,
     onClick: onClickPrevious2,
-    type: "button"
-  }, prev2Label), prevLabel !== null && /*#__PURE__*/React.createElement("button", {
-    "aria-label": prevAriaLabel,
-    className: "".concat(className, "__arrow ").concat(className, "__prev-button"),
+    type: 'button',
+  }, prev2Label), prevLabel !== null && /* #__PURE__ */React.createElement('button', {
+    'aria-label': prevAriaLabel,
+    className: ''.concat(className, '__arrow ').concat(className, '__prev-button'),
     disabled: prevButtonDisabled,
     onClick: onClickPrevious,
-    type: "button"
-  }, prevLabel), renderButton(), nextLabel !== null && /*#__PURE__*/React.createElement("button", {
-    "aria-label": nextAriaLabel,
-    className: "".concat(className, "__arrow ").concat(className, "__next-button"),
+    type: 'button',
+  }, prevLabel), renderButton(), nextLabel !== null && /* #__PURE__ */React.createElement('button', {
+    'aria-label': nextAriaLabel,
+    className: ''.concat(className, '__arrow ').concat(className, '__next-button'),
     disabled: nextButtonDisabled,
     onClick: onClickNext,
-    type: "button"
-  }, nextLabel), next2Label !== null && shouldShowPrevNext2Buttons && /*#__PURE__*/React.createElement("button", {
-    "aria-label": next2AriaLabel,
-    className: "".concat(className, "__arrow ").concat(className, "__next2-button"),
+    type: 'button',
+  }, nextLabel), next2Label !== null && shouldShowPrevNext2Buttons && /* #__PURE__ */React.createElement('button', {
+    'aria-label': next2AriaLabel,
+    className: ''.concat(className, '__arrow ').concat(className, '__next2-button'),
     disabled: next2ButtonDisabled,
     onClick: onClickNext2,
-    type: "button"
+    type: 'button',
   }, next2Label));
 }
 Navigation.propTypes = {
@@ -192,5 +192,5 @@ Navigation.propTypes = {
   setActiveStartDate: PropTypes.func.isRequired,
   showDoubleView: PropTypes.bool,
   view: isView.isRequired,
-  views: isViews.isRequired
+  views: isViews.isRequired,
 };

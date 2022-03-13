@@ -5,14 +5,14 @@ import Days from './MonthView/Days';
 import Weekdays from './MonthView/Weekdays';
 import WeekNumbers from './MonthView/WeekNumbers';
 
-import {CALENDAR_TYPE_LOCALES, CALENDAR_TYPES} from './shared/const';
-import {isCalendarType} from './shared/propTypes';
+import { CALENDAR_TYPE_LOCALES, CALENDAR_TYPES } from './shared/const';
+import { isCalendarType } from './shared/propTypes';
 
 function getCalendarTypeFromLocale(locale) {
   return (
     Object.keys(CALENDAR_TYPE_LOCALES)
       .find((calendarType) => CALENDAR_TYPE_LOCALES[calendarType].includes(locale))
-    || CALENDAR_TYPES.ISO_8601
+        || CALENDAR_TYPES.ISO_8601
   );
 }
 

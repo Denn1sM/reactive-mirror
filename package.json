@@ -10,6 +10,7 @@
     "@mui/icons-material": "^5.0.1",
     "@mui/material": "^5.0.0",
     "@mui/utils": "^5.0.0",
+    "@reduxjs/toolkit": "^1.8.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -23,6 +24,7 @@
     "react-color": "^2.19.3",
     "react-dom": "^17.0.2",
     "react-open-weather": "^1.1.5",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
     "react-router-transition": "^2.1.0",
     "react-scripts": "4.0.3",
@@ -37,13 +39,9 @@
     "postbuild": "\".\\post_build.cmd\"",
     "proxy": "lcp --proxyUrl https://efa.avv-augsburg.de",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "lint": "eslint **/*.js **/*.tsx",
+    "fix": "eslint --fix **/*.js **/*.tsx"
   },
   "browserslist": {
     "production": [
@@ -62,6 +60,9 @@
     "@types/react-calendar": "^3.4.3",
     "@types/react-color": "^3.0.6",
     "@types/react-router-dom": "^5.1.9",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "eslint-plugin-react": "^7.29.3",
     "react-router-dom": "^5.3.0"
   }
 }

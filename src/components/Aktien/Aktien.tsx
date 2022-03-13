@@ -1,9 +1,6 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import StockChart from "./StockChart";
-// @ts-ignore
-import StockChartPercentage from "./StockChartPercentage";
-import {Context} from "../../state/Store";
 import StockInfo from "./StockInfo";
 
 const useStyles = makeStyles((theme) => ({
@@ -41,8 +38,6 @@ interface Props {
 
 const Aktien: React.FC<Props> = (props) => {
     const classes = useStyles();
-    // @ts-ignore
-    const [state, dispatch] = useContext(Context);
     const akn = "AMZN"
 
     const [chartData, setChartData] = useState<Array<infoElement>>([])
@@ -53,7 +48,7 @@ const Aktien: React.FC<Props> = (props) => {
     //TODO Api Key apikey api-key für Request f91a6ad6368eef5a33eef87d530af583
 
     useEffect(() => {
-        fetch("https://financialmodelingprep.com/api/v3/historical-chart/5min/"+akn+"?apikey=f91a6ad6368eef5a33eef87d530af583")
+        fetch("https://financialmodelingprep.com/api/v3/historical-chart/5min/" + akn + "?apikey=f91a6ad6368eef5a33eef87d530af583")
             .then(response => {
                 response.json().then(res => {
                     console.log(res)
@@ -68,27 +63,26 @@ const Aktien: React.FC<Props> = (props) => {
     }, [])
 
 //TODO: StockNews (Pressemeldungen als bewegtes bild einfügen, API bietet den enpunkt)
-if(chartData?.length > 4){
-    return (
-        <>
-            <div className={classes.chart}>
-                <StockChart chartData={chartData} name={stockName} />
-            </div>
-            <div>
-                <StockInfo startPrice={5345} endPrice={6546} akn={"AAPL"} />
-            </div>
+    if (chartData?.length > 4) {
+        return (
+            <>
+                <div className={classes.chart}>
+                    <StockChart chartData={chartData} name={stockName}/>
+                </div>
+                <div>
+                    <StockInfo startPrice={5345} endPrice={6546} akn={"AAPL"}/>
+                </div>
 
 
-        </>
-    );
-}
-else{
-    return (
-        <>
-        Loading
-        </>
-    )
-}
+            </>
+        );
+    } else {
+        return (
+            <>
+                Loading
+            </>
+        )
+    }
 
 }
 export default Aktien;

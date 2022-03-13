@@ -1,45 +1,46 @@
 import {
-    getCenturyEnd,
-    getCenturyRange,
-    getCenturyStart,
-    getDayEnd,
-    getDayRange,
-    getDayStart,
-    getDecadeEnd,
-    getDecadeRange,
-    getDecadeStart,
-    getMonth as getMonthIndex,
-    getMonthEnd,
-    getMonthRange,
-    getMonthStart,
-    getNextCenturyStart,
-    getNextDecadeStart,
-    getNextMonthStart,
-    getNextYearStart,
-    getPreviousCenturyEnd,
-    getPreviousCenturyStart,
-    getPreviousDecadeEnd,
-    getPreviousDecadeStart,
-    getPreviousMonthEnd,
-    getPreviousMonthStart,
-    getPreviousYearEnd,
-    getPreviousYearStart,
-    getYear,
-    getYearEnd,
-    getYearRange,
-    getYearStart
+  getCenturyEnd,
+  getCenturyRange,
+  getCenturyStart,
+  getDayEnd,
+  getDayRange,
+  getDayStart,
+  getDecadeEnd,
+  getDecadeRange,
+  getDecadeStart,
+  getMonth as getMonthIndex,
+  getMonthEnd,
+  getMonthRange,
+  getMonthStart,
+  getNextCenturyStart,
+  getNextDecadeStart,
+  getNextMonthStart,
+  getNextYearStart,
+  getPreviousCenturyEnd,
+  getPreviousCenturyStart,
+  getPreviousDecadeEnd,
+  getPreviousDecadeStart,
+  getPreviousMonthEnd,
+  getPreviousMonthStart,
+  getPreviousYearEnd,
+  getPreviousYearStart,
+  getYear,
+  getYearEnd,
+  getYearRange,
+  getYearStart,
 } from '@wojtekmaj/date-utils';
-import {CALENDAR_TYPES, WEEKDAYS} from './const';
-import {formatYear as defaultFormatYear} from './dateFormatter';
+import { CALENDAR_TYPES, WEEKDAYS } from './const';
+import { formatYear as defaultFormatYear } from './dateFormatter';
 
-var SUNDAY = WEEKDAYS[0];
-var FRIDAY = WEEKDAYS[5];
-var SATURDAY = WEEKDAYS[6];
+const SUNDAY = WEEKDAYS[0];
+const FRIDAY = WEEKDAYS[5];
+const SATURDAY = WEEKDAYS[6];
+
 /* Simple getters - getting a property of a given point in time */
 
 export function getDayOfWeek(date) {
-  var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
-  var weekday = date.getDay();
+  const calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
+  const weekday = date.getDay();
 
   switch (calendarType) {
     case CALENDAR_TYPES.ISO_8601:
@@ -57,22 +58,25 @@ export function getDayOfWeek(date) {
       throw new Error('Unsupported calendar type.');
   }
 }
+
 /**
  * Century
  */
 
 export function getBeginOfCenturyYear(date) {
-  var beginOfCentury = getCenturyStart(date);
+  const beginOfCentury = getCenturyStart(date);
   return getYear(beginOfCentury);
 }
+
 /**
  * Decade
  */
 
 export function getBeginOfDecadeYear(date) {
-  var beginOfDecade = getDecadeStart(date);
+  const beginOfDecade = getDecadeStart(date);
   return getYear(beginOfDecade);
 }
+
 /**
  * Week
  */
@@ -85,12 +89,13 @@ export function getBeginOfDecadeYear(date) {
  */
 
 export function getBeginOfWeek(date) {
-  var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
-  var year = getYear(date);
-  var monthIndex = getMonthIndex(date);
-  var day = date.getDate() - getDayOfWeek(date, calendarType);
+  const calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
+  const year = getYear(date);
+  const monthIndex = getMonthIndex(date);
+  const day = date.getDate() - getDayOfWeek(date, calendarType);
   return new Date(year, monthIndex, day);
 }
+
 /**
  * Gets week number according to ISO 8601 or US standard.
  * In ISO 8601, Arabic and Hebrew week 1 is the one with January 4.
@@ -101,12 +106,12 @@ export function getBeginOfWeek(date) {
  */
 
 export function getWeekNumber(date) {
-  var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
-  var calendarTypeForWeekNumber = calendarType === CALENDAR_TYPES.US ? CALENDAR_TYPES.US : CALENDAR_TYPES.ISO_8601;
-  var beginOfWeek = getBeginOfWeek(date, calendarTypeForWeekNumber);
-  var year = getYear(date) + 1;
-  var dayInWeekOne;
-  var beginOfFirstWeek; // Look for the first week one that does not come after a given date
+  const calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
+  const calendarTypeForWeekNumber = calendarType === CALENDAR_TYPES.US ? CALENDAR_TYPES.US : CALENDAR_TYPES.ISO_8601;
+  const beginOfWeek = getBeginOfWeek(date, calendarTypeForWeekNumber);
+  let year = getYear(date) + 1;
+  let dayInWeekOne;
+  let beginOfFirstWeek; // Look for the first week one that does not come after a given date
 
   do {
     dayInWeekOne = new Date(year, 0, calendarTypeForWeekNumber === CALENDAR_TYPES.ISO_8601 ? 4 : 1);
@@ -116,6 +121,7 @@ export function getWeekNumber(date) {
 
   return Math.round((beginOfWeek - beginOfFirstWeek) / (8.64e7 * 7)) + 1;
 }
+
 /**
  * Others
  */
@@ -145,9 +151,10 @@ export function getBegin(rangeType, date) {
       return getDayStart(date);
 
     default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
+      throw new Error('Invalid rangeType: '.concat(rangeType));
   }
 }
+
 export function getBeginPrevious(rangeType, date) {
   switch (rangeType) {
     case 'century':
@@ -163,9 +170,10 @@ export function getBeginPrevious(rangeType, date) {
       return getPreviousMonthStart(date);
 
     default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
+      throw new Error('Invalid rangeType: '.concat(rangeType));
   }
 }
+
 export function getBeginNext(rangeType, date) {
   switch (rangeType) {
     case 'century':
@@ -181,9 +189,10 @@ export function getBeginNext(rangeType, date) {
       return getNextMonthStart(date);
 
     default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
+      throw new Error('Invalid rangeType: '.concat(rangeType));
   }
 }
+
 export var getBeginPrevious2 = function getBeginPrevious2(rangeType, date) {
   switch (rangeType) {
     case 'decade':
@@ -196,7 +205,7 @@ export var getBeginPrevious2 = function getBeginPrevious2(rangeType, date) {
       return getPreviousMonthStart(date, -12);
 
     default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
+      throw new Error('Invalid rangeType: '.concat(rangeType));
   }
 };
 export var getBeginNext2 = function getBeginNext2(rangeType, date) {
@@ -211,9 +220,10 @@ export var getBeginNext2 = function getBeginNext2(rangeType, date) {
       return getNextMonthStart(date, 12);
 
     default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
+      throw new Error('Invalid rangeType: '.concat(rangeType));
   }
 };
+
 /**
  * Returns the end of a given range.
  *
@@ -239,9 +249,10 @@ export function getEnd(rangeType, date) {
       return getDayEnd(date);
 
     default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
+      throw new Error('Invalid rangeType: '.concat(rangeType));
   }
 }
+
 export function getEndPrevious(rangeType, date) {
   switch (rangeType) {
     case 'century':
@@ -257,9 +268,10 @@ export function getEndPrevious(rangeType, date) {
       return getPreviousMonthEnd(date);
 
     default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
+      throw new Error('Invalid rangeType: '.concat(rangeType));
   }
 }
+
 export var getEndPrevious2 = function getEndPrevious2(rangeType, date) {
   switch (rangeType) {
     case 'decade':
@@ -272,9 +284,10 @@ export var getEndPrevious2 = function getEndPrevious2(rangeType, date) {
       return getPreviousMonthEnd(date, -12);
 
     default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
+      throw new Error('Invalid rangeType: '.concat(rangeType));
   }
 };
+
 /**
  * Returns an array with the beginning and the end of a given range.
  *
@@ -300,9 +313,10 @@ export function getRange(rangeType, date) {
       return getDayRange(date);
 
     default:
-      throw new Error("Invalid rangeType: ".concat(rangeType));
+      throw new Error('Invalid rangeType: '.concat(rangeType));
   }
 }
+
 /**
  * Creates a range out of two values, ensuring they are in order and covering entire period ranges.
  *
@@ -312,19 +326,16 @@ export function getRange(rangeType, date) {
  */
 
 export function getValueRange(rangeType, date1, date2) {
-  var rawNextValue = [date1, date2].sort(function (a, b) {
-    return a - b;
-  });
+  const rawNextValue = [date1, date2].sort((a, b) => a - b);
   return [getBegin(rangeType, rawNextValue[0]), getEnd(rangeType, rawNextValue[1])];
 }
 
 function toYearLabel(locale) {
-  var formatYear = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultFormatYear;
-  var dates = arguments.length > 2 ? arguments[2] : undefined;
-  return dates.map(function (date) {
-    return formatYear(locale, date);
-  }).join(' – ');
+  const formatYear = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultFormatYear;
+  const dates = arguments.length > 2 ? arguments[2] : undefined;
+  return dates.map((date) => formatYear(locale, date)).join(' – ');
 }
+
 /**
  * Returns a string labelling a century of a given date.
  * For example, for 2017 it will return 2001-2100.
@@ -332,10 +343,10 @@ function toYearLabel(locale) {
  * @param {Date|String|Number} date Date or a year as a string or as a number.
  */
 
-
 export function getCenturyLabel(locale, formatYear, date) {
   return toYearLabel(locale, formatYear, getCenturyRange(date));
 }
+
 /**
  * Returns a string labelling a century of a given date.
  * For example, for 2017 it will return 2011-2020.
@@ -346,6 +357,7 @@ export function getCenturyLabel(locale, formatYear, date) {
 export function getDecadeLabel(locale, formatYear, date) {
   return toYearLabel(locale, formatYear, getDecadeRange(date));
 }
+
 /**
  * Returns a boolean determining whether a given date is on Saturday or Sunday.
  *
@@ -353,8 +365,8 @@ export function getDecadeLabel(locale, formatYear, date) {
  */
 
 export function isWeekend(date) {
-  var calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
-  var weekday = date.getDay();
+  const calendarType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CALENDAR_TYPES.ISO_8601;
+  const weekday = date.getDay();
 
   switch (calendarType) {
     case CALENDAR_TYPES.ARABIC:

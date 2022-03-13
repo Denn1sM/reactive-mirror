@@ -1,4 +1,4 @@
-import {getRange} from './dates';
+import { getRange } from './dates';
 
 /**
  * Returns a value no smaller than min and no larger than max.
@@ -20,21 +20,21 @@ export function between(value, min, max) {
 export function isValueWithinRange(value, range) {
   return (
     range[0] <= value
-    && range[1] >= value
+        && range[1] >= value
   );
 }
 
 export function isRangeWithinRange(greaterRange, smallerRange) {
   return (
     greaterRange[0] <= smallerRange[0]
-    && greaterRange[1] >= smallerRange[1]
+        && greaterRange[1] >= smallerRange[1]
   );
 }
 
 export function doRangesOverlap(range1, range2) {
   return (
     isValueWithinRange(range1[0], range2)
-    || isValueWithinRange(range1[1], range2)
+        || isValueWithinRange(range1[1], range2)
   );
 }
 

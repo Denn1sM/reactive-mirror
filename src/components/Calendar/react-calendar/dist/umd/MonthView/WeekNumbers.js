@@ -1,84 +1,81 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+Object.defineProperty(exports, '__esModule', {
+  value: true,
 });
-exports["default"] = WeekNumbers;
+exports.default = WeekNumbers;
 
-var _react = _interopRequireDefault(require("react"));
+const _react = _interopRequireDefault(require('react'));
 
-var _propTypes = _interopRequireDefault(require("prop-types"));
+const _propTypes = _interopRequireDefault(require('prop-types'));
 
-var _dateUtils = require("@wojtekmaj/date-utils");
+const _dateUtils = require('@wojtekmaj/date-utils');
 
-var _WeekNumber = _interopRequireDefault(require("./WeekNumber"));
+const _WeekNumber = _interopRequireDefault(require('./WeekNumber'));
 
-var _Flex = _interopRequireDefault(require("../Flex"));
+const _Flex = _interopRequireDefault(require('../Flex'));
 
-var _dates = require("../shared/dates");
+const _dates = require('../shared/dates');
 
-var _propTypes2 = require("../shared/propTypes");
+const _propTypes2 = require('../shared/propTypes');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 function WeekNumbers(props) {
-  var activeStartDate = props.activeStartDate,
-      calendarType = props.calendarType,
-      onClickWeekNumber = props.onClickWeekNumber,
-      onMouseLeave = props.onMouseLeave,
-      showFixedNumberOfWeeks = props.showFixedNumberOfWeeks;
+  const { activeStartDate } = props;
+  const { calendarType } = props;
+  const { onClickWeekNumber } = props;
+  const { onMouseLeave } = props;
+  const { showFixedNumberOfWeeks } = props;
 
-  var numberOfWeeks = function () {
+  const numberOfWeeks = (function () {
     if (showFixedNumberOfWeeks) {
       return 6;
     }
 
-    var numberOfDays = (0, _dateUtils.getDaysInMonth)(activeStartDate);
-    var startWeekday = (0, _dates.getDayOfWeek)(activeStartDate, calendarType);
-    var days = numberOfDays - (7 - startWeekday);
+    const numberOfDays = (0, _dateUtils.getDaysInMonth)(activeStartDate);
+    const startWeekday = (0, _dates.getDayOfWeek)(activeStartDate, calendarType);
+    const days = numberOfDays - (7 - startWeekday);
     return 1 + Math.ceil(days / 7);
-  }();
+  }());
 
-  var dates = function () {
-    var year = (0, _dateUtils.getYear)(activeStartDate);
-    var monthIndex = (0, _dateUtils.getMonth)(activeStartDate);
-    var day = (0, _dateUtils.getDate)(activeStartDate);
-    var result = [];
+  const dates = (function () {
+    const year = (0, _dateUtils.getYear)(activeStartDate);
+    const monthIndex = (0, _dateUtils.getMonth)(activeStartDate);
+    const day = (0, _dateUtils.getDate)(activeStartDate);
+    const result = [];
 
-    for (var index = 0; index < numberOfWeeks; index += 1) {
+    for (let index = 0; index < numberOfWeeks; index += 1) {
       result.push((0, _dates.getBeginOfWeek)(new Date(year, monthIndex, day + index * 7), calendarType));
     }
 
     return result;
-  }();
+  }());
 
-  var weekNumbers = dates.map(function (date) {
-    return (0, _dates.getWeekNumber)(date, calendarType);
-  });
-  return /*#__PURE__*/_react["default"].createElement(_Flex["default"], {
-    className: "react-calendar__month-view__weekNumbers",
+  const weekNumbers = dates.map((date) => (0, _dates.getWeekNumber)(date, calendarType));
+  return /* #__PURE__ */_react.default.createElement(_Flex.default, {
+    className: 'react-calendar__month-view__weekNumbers',
     count: numberOfWeeks,
-    direction: "column",
+    direction: 'column',
     onFocus: onMouseLeave,
     onMouseOver: onMouseLeave,
     style: {
       flexBasis: 'calc(100% * (1 / 8)',
-      flexShrink: 0
-    }
-  }, weekNumbers.map(function (weekNumber, weekIndex) {
-    return /*#__PURE__*/_react["default"].createElement(_WeekNumber["default"], {
+      flexShrink: 0,
+    },
+  }, weekNumbers.map((weekNumber, weekIndex) =>
+  /* #__PURE__ */_react.default.createElement(_WeekNumber.default, {
       key: weekNumber,
       date: dates[weekIndex],
-      onClickWeekNumber: onClickWeekNumber,
-      weekNumber: weekNumber
-    });
-  }));
+      onClickWeekNumber,
+      weekNumber,
+    })));
 }
 
 WeekNumbers.propTypes = {
-  activeStartDate: _propTypes["default"].instanceOf(Date).isRequired,
+  activeStartDate: _propTypes.default.instanceOf(Date).isRequired,
   calendarType: _propTypes2.isCalendarType.isRequired,
-  onClickWeekNumber: _propTypes["default"].func,
-  onMouseLeave: _propTypes["default"].func,
-  showFixedNumberOfWeeks: _propTypes["default"].bool
+  onClickWeekNumber: _propTypes.default.func,
+  onMouseLeave: _propTypes.default.func,
+  showFixedNumberOfWeeks: _propTypes.default.bool,
 };

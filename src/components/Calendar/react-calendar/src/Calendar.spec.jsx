@@ -1,6 +1,6 @@
 import React from 'react';
-import {mount, shallow} from 'enzyme';
-import {getMonthStart} from '@wojtekmaj/date-utils';
+import { mount, shallow } from 'enzyme';
+import { getMonthStart } from '@wojtekmaj/date-utils';
 
 import Calendar from './Calendar';
 
@@ -8,7 +8,8 @@ const { format } = new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'lo
 
 const event = document.createEvent('MouseEvent');
 event.initEvent('click', true, true);
-event.persist = () => {};
+event.persist = () => {
+};
 
 describe('Calendar', () => {
   it('applies className to its wrapper when given a string', () => {

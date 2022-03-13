@@ -14,6 +14,7 @@ Ultimate calendar for your React app.
 * No moment.js needed
 
 ## tl;dr
+
 * Install by executing `npm install react-calendar` or `yarn add react-calendar`.
 * Import by adding `import Calendar from 'react-calendar'`.
 * Use by adding `<Calendar />`. Use `onChange` prop for getting new values.
@@ -26,7 +27,9 @@ A minimal demo page can be found in `sample` directory.
 
 ## Before you continue
 
-React-Calendar is under constant development. This documentation is written for React-Calendar 3.x branch. If you want to see documentation for other versions of React-Calendar, use dropdown on top of GitHub page to switch to an appropriate tag. Here are quick links to the newest docs from each branch:
+React-Calendar is under constant development. This documentation is written for React-Calendar 3.x branch. If you want
+to see documentation for other versions of React-Calendar, use dropdown on top of GitHub page to switch to an
+appropriate tag. Here are quick links to the newest docs from each branch:
 
 * [v2.x](https://github.com/wojtekmaj/react-calendar/blob/v2.x/README.md)
 
@@ -36,11 +39,13 @@ React-Calendar is under constant development. This documentation is written for 
 
 Your project needs to use React 16.3 or later.
 
-React-Calendar uses modern web technologies. That's why it's so fast, lightweight and easy to style. This, however, comes at a cost of [supporting only modern browsers](https://caniuse.com/#feat=internationalization).
+React-Calendar uses modern web technologies. That's why it's so fast, lightweight and easy to style. This, however,
+comes at a cost of [supporting only modern browsers](https://caniuse.com/#feat=internationalization).
 
 #### Legacy browsers
 
-If you need to support legacy browsers like Internet Explorer 10, you will need to use [Intl.js](https://github.com/andyearnshaw/Intl.js/) or another Intl polyfill along with React-Calendar.
+If you need to support legacy browsers like Internet Explorer 10, you will need to
+use [Intl.js](https://github.com/andyearnshaw/Intl.js/) or another Intl polyfill along with React-Calendar.
 
 ### Installation
 
@@ -68,7 +73,10 @@ function MyApp() {
 }
 ```
 
-Check the [sample directory](https://github.com/wojtekmaj/react-calendar/tree/master/sample) in this repository for a full working example. For more examples and more advanced use cases, check [Recipes](https://github.com/wojtekmaj/react-calendar/wiki/Recipes) in [React-Calendar Wiki](https://github.com/wojtekmaj/react-calendar/wiki).
+Check the [sample directory](https://github.com/wojtekmaj/react-calendar/tree/master/sample) in this repository for a
+full working example. For more examples and more advanced use cases,
+check [Recipes](https://github.com/wojtekmaj/react-calendar/wiki/Recipes)
+in [React-Calendar Wiki](https://github.com/wojtekmaj/react-calendar/wiki).
 
 ### Custom styling
 
@@ -183,13 +191,15 @@ The MIT License.
 
 ### Sponsors
 
-Thank you to all our sponsors! [Become a sponsor](https://opencollective.com/react-calendar#sponsor) and get your image on our README on GitHub.
+Thank you to all our sponsors! [Become a sponsor](https://opencollective.com/react-calendar#sponsor) and get your image
+on our README on GitHub.
 
 <a href="https://opencollective.com/react-calendar#sponsors" target="_blank"><img src="https://opencollective.com/react-calendar/sponsors.svg?width=890"></a>
 
 ### Backers
 
-Thank you to all our backers! [Become a backer](https://opencollective.com/react-calendar#backer) and get your image on our README on GitHub.
+Thank you to all our backers! [Become a backer](https://opencollective.com/react-calendar#backer) and get your image on
+our README on GitHub.
 
 <a href="https://opencollective.com/react-calendar#backers" target="_blank"><img src="https://opencollective.com/react-calendar/backers.svg?width=890"></a>
 

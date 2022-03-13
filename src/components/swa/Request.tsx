@@ -1,30 +1,28 @@
-import {Verbindung} from "./Connections";
-
+import { Verbindung } from '../../state/transport/to';
 
 export const fetchData = async (einstieg: string) => {
-    const alleVerbindungen: Array<Verbindung> = [];
+  const alleVerbindungen: Array<Verbindung> = [];
 
+  const date = new Date();
+  const day = (`0${date.getDate()}`).slice(-2);
+  const month = (`0${date.getMonth() + 1}`).slice(-2);
+  const year = date.getFullYear();
+  const dateString = `${day}.${month}.${year}`;
 
-    const date = new Date();
-    let day = ("0" + date.getDate()).slice(-2);
-    let month = ("0" + (date.getMonth() + 1)).slice(-2);
-    let year = date.getFullYear();
-    const dateString = day + "." + month + "." + year;
+  const hour = (`0${date.getHours()}`).slice(-2);
+  const minute = (`0${date.getMinutes()}`).slice(-2);
+  const currentTime = hour + minute;
+  // https://cors-anywhere.herokuapp.com/https://www.api.com/
+  // return fetch("http://localhost:8010/proxy/avv2/XSLT_DM_REQUEST", {
 
-    let hour = ("0" + date.getHours()).slice(-2);
-    let minute = ("0" + date.getMinutes()).slice(-2);
-    const currentTime = hour + minute;
-    //https://cors-anywhere.herokuapp.com/https://www.api.com/
-    //return fetch("http://localhost:8010/proxy/avv2/XSLT_DM_REQUEST", {
-
-    /*
+  /*
 
     return fetch("https://thingproxy.freeboard.io/fetch/https://efa.avv-augsburg.de/avv2/XSLT_DM_REQUEST", {
         //  const res = fetch("https://efa.avv-augsburg.de/avv2/XSLT_TRIP_REQUEST2?sessionID=0&requestID=0&language=de&commonMacro=true&canChangeMOT=0&type_origin=any&type_destination=any&trITMOTvalue100=10&useProxFootSearch=1",
         headers: {
         */
-    //   accept: "*/*",
-    /*
+  //   accept: "*/*",
+  /*
             "accept-language": "de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7",
             "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
             "sec-ch-ua": '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
@@ -81,29 +79,29 @@ export const fetchData = async (einstieg: string) => {
 
 */
 
-    return fetch(`/avv/${einstieg}/${dateString}/${currentTime}`)
-        .then(awaitedResponse => {
-            console.log(awaitedResponse)
-            return awaitedResponse.text()
-        })
-        .then((response) => {
-            for (let i = 0; i < 10; i++) {
-                let elem = response.indexOf("dmTr");
-                response = response.slice(elem, response.length);
-                let abfahrtsZeitIndex = response.indexOf("time ");
-                let abfahrtsZeit = response.slice(abfahrtsZeitIndex + 38, abfahrtsZeitIndex + 43);
-                let linieIndex = response.indexOf("mdv_singleDepInfo");
-                let linieEndIndex = response.indexOf("Bstg.");
-                let linieNummer = response.slice(linieIndex + 19, linieIndex + 22).replace("/", "").trim()
-                let ziel = response.slice(linieIndex + "mdv_singleDepInfo".length + 6, linieEndIndex);
-                let verbindung = {
-                    time: abfahrtsZeit,
-                    linie: linieNummer,
-                    ziel: ziel
-                };
-                alleVerbindungen.push(verbindung);
-                response = response.slice(5, response.length);
-            }
-            return alleVerbindungen;
-        });
-}
+  return fetch(`/avv/${einstieg}/${dateString}/${currentTime}`)
+    .then((awaitedResponse) => {
+      console.log(awaitedResponse);
+      return awaitedResponse.text();
+    })
+    .then((response) => {
+      for (let i = 0; i < 10; i++) {
+        const elem = response.indexOf('dmTr');
+        response = response.slice(elem, response.length);
+        const abfahrtsZeitIndex = response.indexOf('time ');
+        const abfahrtsZeit = response.slice(abfahrtsZeitIndex + 38, abfahrtsZeitIndex + 43);
+        const linieIndex = response.indexOf('mdv_singleDepInfo');
+        const linieEndIndex = response.indexOf('Bstg.');
+        const linieNummer = response.slice(linieIndex + 19, linieIndex + 22).replace('/', '').trim();
+        const ziel = response.slice(linieIndex + 'mdv_singleDepInfo'.length + 6, linieEndIndex);
+        const verbindung = {
+          time: abfahrtsZeit,
+          linie: linieNummer,
+          ziel,
+        };
+        alleVerbindungen.push(verbindung);
+        response = response.slice(5, response.length);
+      }
+      return alleVerbindungen;
+    });
+};

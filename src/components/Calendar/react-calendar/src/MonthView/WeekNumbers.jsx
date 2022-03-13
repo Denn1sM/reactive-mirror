@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getDate, getDaysInMonth, getMonth, getYear,} from '@wojtekmaj/date-utils';
+import {
+  getDate, getDaysInMonth, getMonth, getYear,
+} from '@wojtekmaj/date-utils';
 
 import WeekNumber from './WeekNumber';
 import Flex from '../Flex';
 
-import {getBeginOfWeek, getDayOfWeek, getWeekNumber,} from '../shared/dates';
-import {isCalendarType} from '../shared/propTypes';
+import { getBeginOfWeek, getDayOfWeek, getWeekNumber } from '../shared/dates';
+import { isCalendarType } from '../shared/propTypes';
 
 export default function WeekNumbers(props) {
   const {
@@ -55,15 +57,15 @@ export default function WeekNumbers(props) {
       style={{ flexBasis: 'calc(100% * (1 / 8)', flexShrink: 0 }}
     >
       {
-        weekNumbers.map((weekNumber, weekIndex) => (
-          <WeekNumber
-            key={weekNumber}
-            date={dates[weekIndex]}
-            onClickWeekNumber={onClickWeekNumber}
-            weekNumber={weekNumber}
-          />
-        ))
-      }
+                weekNumbers.map((weekNumber, weekIndex) => (
+                  <WeekNumber
+                    key={weekNumber}
+                    date={dates[weekIndex]}
+                    onClickWeekNumber={onClickWeekNumber}
+                    weekNumber={weekNumber}
+                  />
+                ))
+            }
     </Flex>
   );
 }

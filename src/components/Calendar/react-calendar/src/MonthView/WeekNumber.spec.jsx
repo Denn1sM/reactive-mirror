@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 import WeekNumber from './WeekNumber';
 
@@ -18,7 +18,8 @@ describe('<WeekNumber /> component', () => {
   });
 
   it('renders button given onClickWeekNumber prop', () => {
-    const onClickWeekNumber = () => {};
+    const onClickWeekNumber = () => {
+    };
 
     const component = shallow(
       <WeekNumber

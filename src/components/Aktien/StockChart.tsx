@@ -51,8 +51,7 @@ const StockChart: React.FC<Props> = (props) => {
                 }}
                 options={{
                     elements: {
-                        line: {
-                        },
+                        line: {},
                         point: {
                             radius: 0,
                         },

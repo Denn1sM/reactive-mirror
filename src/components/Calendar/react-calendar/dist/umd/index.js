@@ -1,51 +1,51 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+Object.defineProperty(exports, '__esModule', {
+  value: true,
 });
-Object.defineProperty(exports, "Calendar", {
+Object.defineProperty(exports, 'Calendar', {
   enumerable: true,
   get: function get() {
-    return _Calendar["default"];
-  }
+    return _Calendar.default;
+  },
 });
-Object.defineProperty(exports, "CenturyView", {
+Object.defineProperty(exports, 'CenturyView', {
   enumerable: true,
   get: function get() {
-    return _CenturyView["default"];
-  }
+    return _CenturyView.default;
+  },
 });
-Object.defineProperty(exports, "DecadeView", {
+Object.defineProperty(exports, 'DecadeView', {
   enumerable: true,
   get: function get() {
-    return _DecadeView["default"];
-  }
+    return _DecadeView.default;
+  },
 });
-Object.defineProperty(exports, "YearView", {
+Object.defineProperty(exports, 'YearView', {
   enumerable: true,
   get: function get() {
-    return _YearView["default"];
-  }
+    return _YearView.default;
+  },
 });
-Object.defineProperty(exports, "MonthView", {
+Object.defineProperty(exports, 'MonthView', {
   enumerable: true,
   get: function get() {
-    return _MonthView["default"];
-  }
+    return _MonthView.default;
+  },
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
-var _Calendar = _interopRequireDefault(require("./Calendar"));
+var _Calendar = _interopRequireDefault(require('./Calendar'));
 
-var _CenturyView = _interopRequireDefault(require("./CenturyView"));
+var _CenturyView = _interopRequireDefault(require('./CenturyView'));
 
-var _DecadeView = _interopRequireDefault(require("./DecadeView"));
+var _DecadeView = _interopRequireDefault(require('./DecadeView'));
 
-var _YearView = _interopRequireDefault(require("./YearView"));
+var _YearView = _interopRequireDefault(require('./YearView'));
 
-var _MonthView = _interopRequireDefault(require("./MonthView"));
+var _MonthView = _interopRequireDefault(require('./MonthView'));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
-var _default = _Calendar["default"];
-exports["default"] = _default;
+const _default = _Calendar.default;
+exports.default = _default;

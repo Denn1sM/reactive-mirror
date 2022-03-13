@@ -1,4 +1,6 @@
-import {between, doRangesOverlap, getTileClasses, isRangeWithinRange, isValueWithinRange,} from './utils';
+import {
+  between, doRangesOverlap, getTileClasses, isRangeWithinRange, isValueWithinRange,
+} from './utils';
 
 describe('between', () => {
   it('returns value when value is within set boundaries', () => {

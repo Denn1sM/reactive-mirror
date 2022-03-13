@@ -1,4 +1,4 @@
-import React, {createContext, useReducer} from "react";
+/* import React, {createContext, useReducer} from "react";
 import Reducer from './Reducer'
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
 };
 
 // @ts-ignore
-const Store = ({children}) => {
+const Storeold = ({children}) => {
     const [state, dispatch] = useReducer(Reducer, initialState);
     // @ts-ignore
     return (
@@ -19,6 +19,6 @@ const Store = ({children}) => {
 };
 
 export const Context = createContext(initialState);
-export default Store;
+export default Storeold;
 
-
+ */

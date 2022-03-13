@@ -1,24 +1,24 @@
-import {getDayEnd, getDayStart} from '@wojtekmaj/date-utils';
+import { getDayEnd, getDayStart } from '@wojtekmaj/date-utils';
 
 import {
-    getBegin,
-    getBeginNext,
-    getBeginNext2,
-    getBeginOfCenturyYear,
-    getBeginOfDecadeYear,
-    getBeginOfWeek,
-    getBeginPrevious,
-    getBeginPrevious2,
-    getCenturyLabel,
-    getDayOfWeek,
-    getDecadeLabel,
-    getEnd,
-    getEndPrevious,
-    getEndPrevious2,
-    getRange,
-    getValueRange,
-    getWeekNumber,
-    isWeekend,
+  getBegin,
+  getBeginNext,
+  getBeginNext2,
+  getBeginOfCenturyYear,
+  getBeginOfDecadeYear,
+  getBeginOfWeek,
+  getBeginPrevious,
+  getBeginPrevious2,
+  getCenturyLabel,
+  getDayOfWeek,
+  getDecadeLabel,
+  getEnd,
+  getEndPrevious,
+  getEndPrevious2,
+  getRange,
+  getValueRange,
+  getWeekNumber,
+  isWeekend,
 } from './dates';
 
 describe('getDayOfWeek', () => {
@@ -847,7 +847,8 @@ describe('isWeekend', () => {
       ${new Date(2017, 0, 1)}   | ${true}
       ${new Date(2017, 0, 2)}   | ${false}
     `('returns $flag for $date', ({
-      date, flag,
+      date,
+      flag,
     }) => {
       expect(isWeekend(date, 'ISO 8601')).toBe(flag);
     });
@@ -861,7 +862,8 @@ describe('isWeekend', () => {
       ${new Date(2017, 0, 1)}   | ${true}
       ${new Date(2017, 0, 2)}   | ${false}
     `('returns $flag for $date', ({
-      date, flag,
+      date,
+      flag,
     }) => {
       expect(isWeekend(date, 'US')).toBe(flag);
     });
@@ -875,7 +877,8 @@ describe('isWeekend', () => {
       ${new Date(2017, 0, 1)}   | ${false}
       ${new Date(2017, 0, 2)}   | ${false}
     `('returns $flag for $date', ({
-      date, flag,
+      date,
+      flag,
     }) => {
       expect(isWeekend(date, 'Arabic')).toBe(flag);
     });
@@ -889,7 +892,8 @@ describe('isWeekend', () => {
       ${new Date(2017, 0, 1)}   | ${false}
       ${new Date(2017, 0, 2)}   | ${false}
     `('returns $flag for $date', ({
-      date, flag,
+      date,
+      flag,
     }) => {
       expect(isWeekend(date, 'Hebrew')).toBe(flag);
     });
@@ -903,7 +907,8 @@ describe('isWeekend', () => {
       ${new Date(2017, 0, 1)}   | ${true}
       ${new Date(2017, 0, 2)}   | ${false}
     `('returns $flag for $date', ({
-      date, flag,
+      date,
+      flag,
     }) => {
       expect(isWeekend(date)).toBe(flag);
     });

@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 import Navigation from './Navigation';
 
@@ -8,8 +8,10 @@ const allViews = ['century', 'decade', 'year', 'month'];
 describe('Navigation', () => {
   const defaultProps = {
     activeStartDate: new Date(2017, 0, 1),
-    drillUp: () => {},
-    setActiveStartDate: () => {},
+    drillUp: () => {
+    },
+    setActiveStartDate: () => {
+    },
     views: allViews,
   };
 

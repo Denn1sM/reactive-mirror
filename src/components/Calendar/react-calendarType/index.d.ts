@@ -98,8 +98,11 @@ export interface DrillCallbackProperties {
 }
 
 export function MonthView(props: DetailViewProps): JSX.Element;
+
 export function YearView(props: DetailViewProps): JSX.Element;
+
 export function DecadeView(props: DetailViewProps): JSX.Element;
+
 export function CenturyView(props: DetailViewProps): JSX.Element;
 
 export interface DetailViewProps {
